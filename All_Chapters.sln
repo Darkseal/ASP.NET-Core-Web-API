@@ -1,0 +1,122 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_02\MyBGList\MyBGList.csproj", "{E0467401-AF14-4810-8E7E-22BD4E8D5FFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter 02", "Chapter 02", "{AB5F2A98-5AA1-4A25-AD70-0BCBB3F5AA58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter 01", "Chapter 01", "{6D526D52-DA7C-415F-A3D2-0C612923BF6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{6773746C-CAC2-4114-81DE-B3418FB485C5}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_02\Exercises\appsettings.Development.json = Chapter_02\Exercises\appsettings.Development.json
+		Chapter_02\Exercises\appsettings.json = Chapter_02\Exercises\appsettings.json
+		Chapter_02\Exercises\appsettings.Staging.json = Chapter_02\Exercises\appsettings.Staging.json
+		Chapter_02\Exercises\BoardGame.cs = Chapter_02\Exercises\BoardGame.cs
+		Chapter_02\Exercises\BoardGamesController.cs = Chapter_02\Exercises\BoardGamesController.cs
+		Chapter_02\Exercises\launchSettings.json = Chapter_02\Exercises\launchSettings.json
+		Chapter_02\Exercises\Program.cs = Chapter_02\Exercises\Program.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter_03", "Chapter_03", "{39EC7DDB-AA88-480F-B324-877E2C473D9B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_03\MyBGList\MyBGList.csproj", "{FBD73632-9D61-46DE-A057-8F01C77E2E49}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList_ApiVersion", "Chapter_03\MyBGList_ApiVersion\MyBGList_ApiVersion.csproj", "{85DD4D4C-B8E0-49C2-9AA2-E198BBB62329}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{545CADC5-5C94-4792-81A3-0FD9EE3DC350}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_03\Exercises\Program.cs = Chapter_03\Exercises\Program.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controllers", "Controllers", "{C692CEE7-E168-43C7-A5E9-7B05B29CE0AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "v1", "v1", "{27FADEF1-383E-4FCE-8FBD-7B1BBACAB926}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_03\Exercises\Controllers\v1\BoardGamesController.cs = Chapter_03\Exercises\Controllers\v1\BoardGamesController.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "v2", "v2", "{45E2DF92-2C53-476C-A9DB-2CA409068AEA}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_03\Exercises\Controllers\v2\BoardGamesController.cs = Chapter_03\Exercises\Controllers\v2\BoardGamesController.cs
+		Chapter_03\Exercises\Controllers\v2\CodeOnDemandController.cs = Chapter_03\Exercises\Controllers\v2\CodeOnDemandController.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "v3", "v3", "{86155047-E0DD-485C-BCC8-048600286231}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_03\Exercises\Controllers\v3\CodeOnDemandController.cs = Chapter_03\Exercises\Controllers\v3\CodeOnDemandController.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter_04", "Chapter_04", "{888CC4D4-8F56-4EBE-B0C3-829BCE934E00}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_04\MyBGList\MyBGList.csproj", "{8FDCC6E3-FB56-45EF-B18D-B34C882CD1FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{79FC43C4-0966-4DAC-957E-BDB1A36E696E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", "{73294E53-5E4A-4E1E-9D57-3C6FE607EBCE}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_04\Exercises\Migrations\20220127000740_Chapter04_Exercises.cs = Chapter_04\Exercises\Migrations\20220127000740_Chapter04_Exercises.cs
+		Chapter_04\Exercises\Migrations\20220127000740_Chapter04_Exercises.Designer.cs = Chapter_04\Exercises\Migrations\20220127000740_Chapter04_Exercises.Designer.cs
+		Chapter_04\Exercises\Migrations\ApplicationDbContextModelSnapshot.cs = Chapter_04\Exercises\Migrations\ApplicationDbContextModelSnapshot.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{E566019F-3A19-4FF0-90C5-D5BB98B49A9E}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_04\Exercises\Model\ApplicationDbContext.cs = Chapter_04\Exercises\Model\ApplicationDbContext.cs
+		Chapter_04\Exercises\Model\BoardGame.cs = Chapter_04\Exercises\Model\BoardGame.cs
+		Chapter_04\Exercises\Model\BoardGames_Categories.cs = Chapter_04\Exercises\Model\BoardGames_Categories.cs
+		Chapter_04\Exercises\Model\BoardGames_Domains.cs = Chapter_04\Exercises\Model\BoardGames_Domains.cs
+		Chapter_04\Exercises\Model\BoardGames_Mechanics.cs = Chapter_04\Exercises\Model\BoardGames_Mechanics.cs
+		Chapter_04\Exercises\Model\Category.cs = Chapter_04\Exercises\Model\Category.cs
+		Chapter_04\Exercises\Model\Domain.cs = Chapter_04\Exercises\Model\Domain.cs
+		Chapter_04\Exercises\Model\Mechanic.cs = Chapter_04\Exercises\Model\Mechanic.cs
+		Chapter_04\Exercises\Model\Publisher.cs = Chapter_04\Exercises\Model\Publisher.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0467401-AF14-4810-8E7E-22BD4E8D5FFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0467401-AF14-4810-8E7E-22BD4E8D5FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0467401-AF14-4810-8E7E-22BD4E8D5FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0467401-AF14-4810-8E7E-22BD4E8D5FFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD73632-9D61-46DE-A057-8F01C77E2E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD73632-9D61-46DE-A057-8F01C77E2E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD73632-9D61-46DE-A057-8F01C77E2E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD73632-9D61-46DE-A057-8F01C77E2E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85DD4D4C-B8E0-49C2-9AA2-E198BBB62329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85DD4D4C-B8E0-49C2-9AA2-E198BBB62329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85DD4D4C-B8E0-49C2-9AA2-E198BBB62329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85DD4D4C-B8E0-49C2-9AA2-E198BBB62329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FDCC6E3-FB56-45EF-B18D-B34C882CD1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FDCC6E3-FB56-45EF-B18D-B34C882CD1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FDCC6E3-FB56-45EF-B18D-B34C882CD1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FDCC6E3-FB56-45EF-B18D-B34C882CD1FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0467401-AF14-4810-8E7E-22BD4E8D5FFE} = {AB5F2A98-5AA1-4A25-AD70-0BCBB3F5AA58}
+		{6773746C-CAC2-4114-81DE-B3418FB485C5} = {AB5F2A98-5AA1-4A25-AD70-0BCBB3F5AA58}
+		{FBD73632-9D61-46DE-A057-8F01C77E2E49} = {39EC7DDB-AA88-480F-B324-877E2C473D9B}
+		{85DD4D4C-B8E0-49C2-9AA2-E198BBB62329} = {39EC7DDB-AA88-480F-B324-877E2C473D9B}
+		{545CADC5-5C94-4792-81A3-0FD9EE3DC350} = {39EC7DDB-AA88-480F-B324-877E2C473D9B}
+		{C692CEE7-E168-43C7-A5E9-7B05B29CE0AF} = {545CADC5-5C94-4792-81A3-0FD9EE3DC350}
+		{27FADEF1-383E-4FCE-8FBD-7B1BBACAB926} = {C692CEE7-E168-43C7-A5E9-7B05B29CE0AF}
+		{45E2DF92-2C53-476C-A9DB-2CA409068AEA} = {C692CEE7-E168-43C7-A5E9-7B05B29CE0AF}
+		{86155047-E0DD-485C-BCC8-048600286231} = {C692CEE7-E168-43C7-A5E9-7B05B29CE0AF}
+		{8FDCC6E3-FB56-45EF-B18D-B34C882CD1FF} = {888CC4D4-8F56-4EBE-B0C3-829BCE934E00}
+		{79FC43C4-0966-4DAC-957E-BDB1A36E696E} = {888CC4D4-8F56-4EBE-B0C3-829BCE934E00}
+		{73294E53-5E4A-4E1E-9D57-3C6FE607EBCE} = {79FC43C4-0966-4DAC-957E-BDB1A36E696E}
+		{E566019F-3A19-4FF0-90C5-D5BB98B49A9E} = {79FC43C4-0966-4DAC-957E-BDB1A36E696E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58E128FF-6460-4A49-9E95-9D8E08D888FC}
+	EndGlobalSection
+EndGlobal
