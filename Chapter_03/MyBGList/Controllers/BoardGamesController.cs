@@ -20,7 +20,7 @@ namespace MyBGList.Controllers
         {
             return new RestDTO<BoardGame[]>()
             {
-                Data = new BoardGame[] {
+                Data = new [] {
             new BoardGame() {
                 Id = 1,
                 Name = "Axis & Allies",
@@ -29,7 +29,7 @@ namespace MyBGList.Controllers
             },
             new BoardGame() {
                 Id = 2,
-                Name = "Citadel",
+                Name = "Citadels",
                 Publisher = "Hans im Glück",
                 Year = 2000
             },

@@ -30,7 +30,7 @@ namespace MyBGList.Controllers.v2
                     },
                     new BoardGame() {
                         Id = 2,
-                        Name = "Citadel",
+                        Name = "Citadels",
                         Publisher = "Hans im Glück",
                         Year = 2000
                     },

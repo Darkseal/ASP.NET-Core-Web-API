@@ -75,6 +75,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{E566019F
 		Chapter_04\Exercises\Model\Publisher.cs = Chapter_04\Exercises\Model\Publisher.cs
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter_05", "Chapter_05", "{61A32274-F783-4004-A45E-1BB097127920}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{8DFE3088-B0DF-4C84-B9A1-030C58F0C4A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_05\MyBGList\MyBGList.csproj", "{19184268-B3AB-40AE-B3E4-990B2D629849}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controllers", "Controllers", "{796403DB-ADC4-4598-A7FF-82E9C7AE1878}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_05\Exercises\Controllers\BoardGamesController.cs = Chapter_05\Exercises\Controllers\BoardGamesController.cs
+		Chapter_05\Exercises\Controllers\SeedController.cs = Chapter_05\Exercises\Controllers\SeedController.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DTO", "DTO", "{D559F09C-25F6-4515-964E-A90A99B768AD}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_05\Exercises\DTO\BoardGameDTO.cs = Chapter_05\Exercises\DTO\BoardGameDTO.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +114,10 @@ Global
 		{8FDCC6E3-FB56-45EF-B18D-B34C882CD1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FDCC6E3-FB56-45EF-B18D-B34C882CD1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FDCC6E3-FB56-45EF-B18D-B34C882CD1FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19184268-B3AB-40AE-B3E4-990B2D629849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19184268-B3AB-40AE-B3E4-990B2D629849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19184268-B3AB-40AE-B3E4-990B2D629849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19184268-B3AB-40AE-B3E4-990B2D629849}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +136,10 @@ Global
 		{79FC43C4-0966-4DAC-957E-BDB1A36E696E} = {888CC4D4-8F56-4EBE-B0C3-829BCE934E00}
 		{73294E53-5E4A-4E1E-9D57-3C6FE607EBCE} = {79FC43C4-0966-4DAC-957E-BDB1A36E696E}
 		{E566019F-3A19-4FF0-90C5-D5BB98B49A9E} = {79FC43C4-0966-4DAC-957E-BDB1A36E696E}
+		{8DFE3088-B0DF-4C84-B9A1-030C58F0C4A4} = {61A32274-F783-4004-A45E-1BB097127920}
+		{19184268-B3AB-40AE-B3E4-990B2D629849} = {61A32274-F783-4004-A45E-1BB097127920}
+		{796403DB-ADC4-4598-A7FF-82E9C7AE1878} = {8DFE3088-B0DF-4C84-B9A1-030C58F0C4A4}
+		{D559F09C-25F6-4515-964E-A90A99B768AD} = {8DFE3088-B0DF-4C84-B9A1-030C58F0C4A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58E128FF-6460-4A49-9E95-9D8E08D888FC}

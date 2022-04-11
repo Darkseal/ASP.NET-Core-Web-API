@@ -235,7 +235,7 @@ namespace MyBGList.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Mechanic");
+                    b.ToTable("Mechanics");
                 });
 
             modelBuilder.Entity("MyBGList.Model.Publisher", b =>

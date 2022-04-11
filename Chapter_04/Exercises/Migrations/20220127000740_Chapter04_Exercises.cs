@@ -10,14 +10,14 @@ namespace MyBGList.Migrations
         {
             migrationBuilder.AddColumn<int>(
                 name: "Flags",
-                table: "Mechanic",
+                table: "Mechanics",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.AddColumn<string>(
                 name: "Notes",
-                table: "Mechanic",
+                table: "Mechanics",
                 type: "nvarchar(200)",
                 maxLength: 200,
                 nullable: false,
@@ -66,11 +66,11 @@ namespace MyBGList.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "Flags",
-                table: "Mechanic");
+                table: "Mechanics");
 
             migrationBuilder.DropColumn(
                 name: "Notes",
-                table: "Mechanic");
+                table: "Mechanics");
 
             migrationBuilder.DropColumn(
                 name: "Flags",

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyBGList.Model;
 
@@ -11,9 +12,10 @@ using MyBGList.Model;
 namespace MyBGList.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220126224117_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +77,7 @@ namespace MyBGList.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BoardGames", (string)null);
+                    b.ToTable("BoardGames");
                 });
 
             modelBuilder.Entity("MyBGList.Model.BoardGames_Domains", b =>
@@ -93,7 +95,7 @@ namespace MyBGList.Migrations
 
                     b.HasIndex("DomainId");
 
-                    b.ToTable("BoardGames_Domains", (string)null);
+                    b.ToTable("BoardGames_Domains");
                 });
 
             modelBuilder.Entity("MyBGList.Model.BoardGames_Mechanics", b =>
@@ -111,7 +113,7 @@ namespace MyBGList.Migrations
 
                     b.HasIndex("MechanicId");
 
-                    b.ToTable("BoardGames_Mechanics", (string)null);
+                    b.ToTable("BoardGames_Mechanics");
                 });
 
             modelBuilder.Entity("MyBGList.Model.Domain", b =>
@@ -135,7 +137,7 @@ namespace MyBGList.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Domains", (string)null);
+                    b.ToTable("Domains");
                 });
 
             modelBuilder.Entity("MyBGList.Model.Mechanic", b =>
@@ -159,7 +161,7 @@ namespace MyBGList.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Mechanics", (string)null);
+                    b.ToTable("Mechanic");
                 });
 
             modelBuilder.Entity("MyBGList.Model.BoardGames_Domains", b =>

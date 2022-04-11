@@ -27,7 +27,7 @@ namespace MyBGList.Controllers
                 },
                 new BoardGame() {
                     Id = 2,
-                    Name = "Citadel",
+                    Name = "Citadels",
                     Publisher = "Hans im Glück",
                     Year = 2000,
                     MinPlayers = 2,

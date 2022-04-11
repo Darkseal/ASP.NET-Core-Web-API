@@ -407,7 +407,7 @@
 		"def_validationAction": "na",
 		"def_collation": "",
 		"def_others": "",
-		"lastSaved": "Mon Jan 24 2022 03:57:03 GMT+0100 (Ora standard dell’Europa centrale)",
+		"lastSaved": "Mon Jan 24 2022 04:41:12 GMT+0100 (Ora standard dell’Europa centrale)",
 		"writeFileParam": false
 	},
 	"otherObjects": {},
@@ -426,8 +426,8 @@
 			"diagramItems": {
 				"bbecd557-691f-4574-afcd-ed71df802d9b": {
 					"referencedItemId": "bbecd557-691f-4574-afcd-ed71df802d9b",
-					"x": 468,
-					"y": 235,
+					"x": 552,
+					"y": 266,
 					"gHeight": 351,
 					"gWidth": 261,
 					"color": "#ffffff",
@@ -437,9 +437,9 @@
 				},
 				"b22f69f7-2839-4d48-a178-ef69894ac34a": {
 					"referencedItemId": "b22f69f7-2839-4d48-a178-ef69894ac34a",
-					"x": 780,
-					"y": 610,
-					"gHeight": 46,
+					"x": 864,
+					"y": 641,
+					"gHeight": 52,
 					"gWidth": 173,
 					"color": "#ffffff",
 					"background": "#8bc34a",
@@ -448,8 +448,8 @@
 				},
 				"12030846-413a-49c9-b5b1-1f359f474a14": {
 					"referencedItemId": "12030846-413a-49c9-b5b1-1f359f474a14",
-					"x": 250,
-					"y": 539,
+					"x": 334,
+					"y": 570,
 					"gHeight": 45,
 					"gWidth": 176,
 					"color": "#ffffff",
@@ -459,8 +459,8 @@
 				}
 			},
 			"scroll": {
-				"x": 0,
-				"y": 0
+				"left": 0,
+				"top": 0
 			}
 		}
 	},
