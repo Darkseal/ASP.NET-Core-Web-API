@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MyBGList.Model
+namespace MyBGList.Models
 {
     [Table("Mechanics")]
     public class Mechanic

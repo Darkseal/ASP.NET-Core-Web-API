@@ -62,7 +62,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", 
 		Chapter_04\Exercises\Migrations\ApplicationDbContextModelSnapshot.cs = Chapter_04\Exercises\Migrations\ApplicationDbContextModelSnapshot.cs
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{E566019F-3A19-4FF0-90C5-D5BB98B49A9E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{E566019F-3A19-4FF0-90C5-D5BB98B49A9E}"
 	ProjectSection(SolutionItems) = preProject
 		Chapter_04\Exercises\Model\ApplicationDbContext.cs = Chapter_04\Exercises\Model\ApplicationDbContext.cs
 		Chapter_04\Exercises\Model\BoardGame.cs = Chapter_04\Exercises\Model\BoardGame.cs
@@ -92,6 +92,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DTO", "DTO", "{D559F09C-25F
 		Chapter_05\Exercises\DTO\BoardGameDTO.cs = Chapter_05\Exercises\DTO\BoardGameDTO.cs
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter_06", "Chapter_06", "{6E256285-85A8-4485-9C59-10D4F42FAD12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_06\MyBGList\MyBGList.csproj", "{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{FDC5F308-A4DE-47CC-AC9A-BBE480B174C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +124,10 @@ Global
 		{19184268-B3AB-40AE-B3E4-990B2D629849}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19184268-B3AB-40AE-B3E4-990B2D629849}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19184268-B3AB-40AE-B3E4-990B2D629849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +150,8 @@ Global
 		{19184268-B3AB-40AE-B3E4-990B2D629849} = {61A32274-F783-4004-A45E-1BB097127920}
 		{796403DB-ADC4-4598-A7FF-82E9C7AE1878} = {8DFE3088-B0DF-4C84-B9A1-030C58F0C4A4}
 		{D559F09C-25F6-4515-964E-A90A99B768AD} = {8DFE3088-B0DF-4C84-B9A1-030C58F0C4A4}
+		{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3} = {6E256285-85A8-4485-9C59-10D4F42FAD12}
+		{FDC5F308-A4DE-47CC-AC9A-BBE480B174C2} = {6E256285-85A8-4485-9C59-10D4F42FAD12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58E128FF-6460-4A49-9E95-9D8E08D888FC}

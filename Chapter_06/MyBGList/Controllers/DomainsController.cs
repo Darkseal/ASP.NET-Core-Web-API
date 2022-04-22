@@ -1,0 +1,148 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MyBGList.DTO;
+using MyBGList.Models;
+using System.Linq.Expressions;
+using System.Linq.Dynamic.Core;
+using System.ComponentModel.DataAnnotations;
+using MyBGList.Attributes;
+using System.Diagnostics;
+
+namespace MyBGList.Controllers
+{
+    [Route("[controller]")]
+    [ApiController]
+    public class DomainsController : ControllerBase
+    {
+        private readonly ApplicationDbContext _context;
+
+        private readonly ILogger<DomainsController> _logger;
+
+        public DomainsController(
+            ApplicationDbContext context,
+            ILogger<DomainsController> logger)
+        {
+            _context = context;
+            _logger = logger;
+        }
+
+        [HttpGet(Name = "GetDomains")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 60)]
+        [ManualValidationFilter]
+        public async Task<ActionResult<RestDTO<Domain[]>>> Get(
+            [FromQuery] RequestDTO<DomainDTO> input)
+        {
+            if (!ModelState.IsValid)
+            {
+                var details = new ValidationProblemDetails(ModelState);
+                details.Extensions["traceId"] =
+                    Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+                if (ModelState.Keys.Any(k => k == "PageSize"))
+                {
+                    details.Type =
+                        "https://tools.ietf.org/html/rfc7231#section-6.6.2";
+                    details.Status = StatusCodes.Status501NotImplemented;
+                    return new ObjectResult(details) {
+                        StatusCode = StatusCodes.Status501NotImplemented
+                    };
+                }
+                else
+                {
+                    details.Type =
+                        "https://tools.ietf.org/html/rfc7231#section-6.5.1";
+                    details.Status = StatusCodes.Status400BadRequest;
+                    return new BadRequestObjectResult(details);
+                }
+            }
+
+            var query = _context.Domains.AsQueryable();
+            if (!string.IsNullOrEmpty(input.FilterQuery))
+                query = query.Where(b => b.Name.Contains(input.FilterQuery));
+            query = query
+                    .OrderBy($"{input.SortColumn} {input.SortOrder}")
+                    .Skip(input.PageIndex * input.PageSize)
+                    .Take(input.PageSize);
+
+            return new RestDTO<Domain[]>()
+            {
+                Data = await query.ToArrayAsync(),
+                PageIndex = input.PageIndex,
+                PageSize = input.PageSize,
+                RecordCount = await _context.Domains.CountAsync(),
+                Links = new List<LinkDTO> {
+                    new LinkDTO(
+                        Url.Action(
+                            null,
+                            "Domains",
+                            new { input.PageIndex, input.PageSize },
+                            Request.Scheme)!,
+                        "self",
+                        "GET"),
+                }
+            };
+        }
+
+        [HttpPost(Name = "UpdateDomain")]
+        [ResponseCache(NoStore = true)]
+        public async Task<RestDTO<Domain?>> Post(DomainDTO bgDTO)
+        {
+            var Domain = await _context.Domains
+                .Where(b => b.Id == bgDTO.Id)
+                .FirstOrDefaultAsync();
+            if (Domain != null)
+            {
+                if (!string.IsNullOrEmpty(bgDTO.Name))
+                    Domain.Name = bgDTO.Name;
+                Domain.LastModifiedDate = DateTime.Now;
+                _context.Domains.Update(Domain);
+                await _context.SaveChangesAsync();
+            };
+
+            return new RestDTO<Domain?>()
+            {
+                Data = Domain,
+                Links = new List<LinkDTO>
+                {
+                    new LinkDTO(
+                            Url.Action(
+                                null,
+                                "Domains",
+                                bgDTO,
+                                Request.Scheme)!,
+                            "self",
+                            "POST"),
+                }
+            };
+        }
+
+        [HttpDelete(Name = "DeleteDomain")]
+        [ResponseCache(NoStore = true)]
+        public async Task<RestDTO<Domain?>> Delete(int id)
+        {
+            var Domain = await _context.Domains
+                .Where(b => b.Id == id)
+                .FirstOrDefaultAsync();
+            if (Domain != null)
+            {
+                _context.Domains.Remove(Domain);
+                await _context.SaveChangesAsync();
+            };
+
+            return new RestDTO<Domain?>()
+            {
+                Data = Domain,
+                Links = new List<LinkDTO>
+                {
+                    new LinkDTO(
+                            Url.Action(
+                                null,
+                                "Domains",
+                                id,
+                                Request.Scheme)!,
+                            "self",
+                            "DELETE"),
+                }
+            };
+        }
+    }
+}

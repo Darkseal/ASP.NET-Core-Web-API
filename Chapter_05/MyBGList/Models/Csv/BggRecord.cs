@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration.Attributes;
 
-namespace MyBGList.Model.Csv
+namespace MyBGList.Models.Csv
 {
     public class BggRecord
     {

@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MyBGList.Model
+namespace MyBGList.Models
 {
-    [Table("Mechanics")]
-    public class Mechanic
+    [Table("Domains")]
+    public class Domain
     {
         [Key]
         [Required]
@@ -20,6 +20,6 @@ namespace MyBGList.Model
         [Required]
         public DateTime LastModifiedDate { get; set; }
 
-        public ICollection<BoardGames_Mechanics>? BoardGames_Mechanics { get; set; }
+        public ICollection<BoardGames_Domains>? BoardGames_Domains { get; set; }
     }
 }

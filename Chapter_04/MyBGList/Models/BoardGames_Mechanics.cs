@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MyBGList.Model
+namespace MyBGList.Models
 {
-    public class BoardGames_Domains
+    public class BoardGames_Mechanics
     {
         [Key]
         [Required]
@@ -11,13 +11,14 @@ namespace MyBGList.Model
 
         [Key]
         [Required]
-        public int DomainId { get; set; }
+        public int MechanicId { get; set; }
 
         [Required]
         public DateTime CreatedDate { get; set; }
 
         public BoardGame? BoardGame { get; set; }
 
-        public Domain? Domain { get; set; }
+        public Mechanic? Mechanic { get; set; }
+
     }
 }

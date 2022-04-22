@@ -3,8 +3,8 @@ using CsvHelper.Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyBGList.Model;
-using MyBGList.Model.Csv;
+using MyBGList.Models;
+using MyBGList.Models.Csv;
 using System.Globalization;
 
 namespace MyBGList.Controllers

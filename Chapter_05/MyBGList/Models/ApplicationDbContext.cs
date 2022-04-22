@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace MyBGList.Model
+namespace MyBGList.Models
 {
     public class ApplicationDbContext : DbContext
     {

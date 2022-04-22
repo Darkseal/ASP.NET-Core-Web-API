@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyBGList.Model;
+using MyBGList.Models;
 
 #nullable disable
 
@@ -22,7 +22,7 @@ namespace MyBGList.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("MyBGList.Model.BoardGame", b =>
+            modelBuilder.Entity("MyBGList.Models.BoardGame", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,7 +96,7 @@ namespace MyBGList.Migrations
                     b.ToTable("BoardGames");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.BoardGames_Categories", b =>
+            modelBuilder.Entity("MyBGList.Models.BoardGames_Categories", b =>
                 {
                     b.Property<int>("BoardGameId")
                         .HasColumnType("int");
@@ -114,7 +114,7 @@ namespace MyBGList.Migrations
                     b.ToTable("BoardGames_Categories");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.BoardGames_Domains", b =>
+            modelBuilder.Entity("MyBGList.Models.BoardGames_Domains", b =>
                 {
                     b.Property<int>("BoardGameId")
                         .HasColumnType("int");
@@ -132,7 +132,7 @@ namespace MyBGList.Migrations
                     b.ToTable("BoardGames_Domains");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.BoardGames_Mechanics", b =>
+            modelBuilder.Entity("MyBGList.Models.BoardGames_Mechanics", b =>
                 {
                     b.Property<int>("BoardGameId")
                         .HasColumnType("int");
@@ -150,7 +150,7 @@ namespace MyBGList.Migrations
                     b.ToTable("BoardGames_Mechanics");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.Category", b =>
+            modelBuilder.Entity("MyBGList.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -174,7 +174,7 @@ namespace MyBGList.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.Domain", b =>
+            modelBuilder.Entity("MyBGList.Models.Domain", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -206,7 +206,7 @@ namespace MyBGList.Migrations
                     b.ToTable("Domains");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.Mechanic", b =>
+            modelBuilder.Entity("MyBGList.Models.Mechanic", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -238,7 +238,7 @@ namespace MyBGList.Migrations
                     b.ToTable("Mechanics");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.Publisher", b =>
+            modelBuilder.Entity("MyBGList.Models.Publisher", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -262,9 +262,9 @@ namespace MyBGList.Migrations
                     b.ToTable("Publishers");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.BoardGame", b =>
+            modelBuilder.Entity("MyBGList.Models.BoardGame", b =>
                 {
-                    b.HasOne("MyBGList.Model.Publisher", "Publisher")
+                    b.HasOne("MyBGList.Models.Publisher", "Publisher")
                         .WithMany("BoardGames")
                         .HasForeignKey("PublisherId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -273,15 +273,15 @@ namespace MyBGList.Migrations
                     b.Navigation("Publisher");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.BoardGames_Categories", b =>
+            modelBuilder.Entity("MyBGList.Models.BoardGames_Categories", b =>
                 {
-                    b.HasOne("MyBGList.Model.BoardGame", "BoardGame")
+                    b.HasOne("MyBGList.Models.BoardGame", "BoardGame")
                         .WithMany("BoardGames_Categories")
                         .HasForeignKey("BoardGameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyBGList.Model.Category", "Category")
+                    b.HasOne("MyBGList.Models.Category", "Category")
                         .WithMany("BoardGames_Categories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -292,15 +292,15 @@ namespace MyBGList.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.BoardGames_Domains", b =>
+            modelBuilder.Entity("MyBGList.Models.BoardGames_Domains", b =>
                 {
-                    b.HasOne("MyBGList.Model.BoardGame", "BoardGame")
+                    b.HasOne("MyBGList.Models.BoardGame", "BoardGame")
                         .WithMany("BoardGames_Domains")
                         .HasForeignKey("BoardGameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyBGList.Model.Domain", "Domain")
+                    b.HasOne("MyBGList.Models.Domain", "Domain")
                         .WithMany("BoardGames_Domains")
                         .HasForeignKey("DomainId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -311,15 +311,15 @@ namespace MyBGList.Migrations
                     b.Navigation("Domain");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.BoardGames_Mechanics", b =>
+            modelBuilder.Entity("MyBGList.Models.BoardGames_Mechanics", b =>
                 {
-                    b.HasOne("MyBGList.Model.BoardGame", "BoardGame")
+                    b.HasOne("MyBGList.Models.BoardGame", "BoardGame")
                         .WithMany("BoardGames_Mechanics")
                         .HasForeignKey("BoardGameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyBGList.Model.Mechanic", "Mechanic")
+                    b.HasOne("MyBGList.Models.Mechanic", "Mechanic")
                         .WithMany("BoardGames_Mechanics")
                         .HasForeignKey("MechanicId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -330,7 +330,7 @@ namespace MyBGList.Migrations
                     b.Navigation("Mechanic");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.BoardGame", b =>
+            modelBuilder.Entity("MyBGList.Models.BoardGame", b =>
                 {
                     b.Navigation("BoardGames_Categories");
 
@@ -339,22 +339,22 @@ namespace MyBGList.Migrations
                     b.Navigation("BoardGames_Mechanics");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.Category", b =>
+            modelBuilder.Entity("MyBGList.Models.Category", b =>
                 {
                     b.Navigation("BoardGames_Categories");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.Domain", b =>
+            modelBuilder.Entity("MyBGList.Models.Domain", b =>
                 {
                     b.Navigation("BoardGames_Domains");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.Mechanic", b =>
+            modelBuilder.Entity("MyBGList.Models.Mechanic", b =>
                 {
                     b.Navigation("BoardGames_Mechanics");
                 });
 
-            modelBuilder.Entity("MyBGList.Model.Publisher", b =>
+            modelBuilder.Entity("MyBGList.Models.Publisher", b =>
                 {
                     b.Navigation("BoardGames");
                 });
