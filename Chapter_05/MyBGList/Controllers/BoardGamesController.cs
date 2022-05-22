@@ -158,17 +158,17 @@ namespace MyBGList.Controllers
 
         [HttpPost(Name = "UpdateBoardGame")]
         [ResponseCache(NoStore = true)]
-        public async Task<RestDTO<BoardGame?>> Post(BoardGameDTO bgDTO)
+        public async Task<RestDTO<BoardGame?>> Post(BoardGameDTO model)
         {
             var boardgame = await _context.BoardGames
-                .Where(b => b.Id == bgDTO.Id)
+                .Where(b => b.Id == model.Id)
                 .FirstOrDefaultAsync();
             if (boardgame != null)
             {
-                if (!string.IsNullOrEmpty(bgDTO.Name))
-                    boardgame.Name = bgDTO.Name;
-                if (bgDTO.Year.HasValue && bgDTO.Year.Value > 0)
-                    boardgame.Year = bgDTO.Year.Value;
+                if (!string.IsNullOrEmpty(model.Name))
+                    boardgame.Name = model.Name;
+                if (model.Year.HasValue && model.Year.Value > 0)
+                    boardgame.Year = model.Year.Value;
                 boardgame.LastModifiedDate = DateTime.Now;
                 _context.BoardGames.Update(boardgame);
                 await _context.SaveChangesAsync();
@@ -183,7 +183,7 @@ namespace MyBGList.Controllers
                             Url.Action(
                                 null,
                                 "BoardGames",
-                                bgDTO,
+                                model,
                                 Request.Scheme)!,
                             "self",
                             "POST"),

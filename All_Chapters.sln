@@ -97,6 +97,40 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_06\MyBGList\MyBGList.csproj", "{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{FDC5F308-A4DE-47CC-AC9A-BBE480B174C2}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_06\Exercises\Program.cs = Chapter_06\Exercises\Program.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DTO", "DTO", "{ED59CF4D-80A1-4080-AC1D-1580D277D1AC}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_06\Exercises\DTO\DomainDTO.cs = Chapter_06\Exercises\DTO\DomainDTO.cs
+		Chapter_06\Exercises\DTO\MechanicDTO.cs = Chapter_06\Exercises\DTO\MechanicDTO.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Attributes", "Attributes", "{20726514-46BB-46B8-8498-3B0CC299B29C}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_06\Exercises\Attributes\LettersOnlyValidatorAttribute.cs = Chapter_06\Exercises\Attributes\LettersOnlyValidatorAttribute.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controllers", "Controllers", "{C4E2FA0A-C0E3-432E-A9CF-F07A218DC4B3}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_06\Exercises\Controllers\DomainsController.cs = Chapter_06\Exercises\Controllers\DomainsController.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter_07", "Chapter_07", "{3E2EDCC2-A7E1-4A2F-8143-0B1E45512C28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_07\MyBGList\MyBGList.csproj", "{ACCDB842-9030-42F7-BF74-943BA0A2797C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{87A6BDDF-56DB-4EBC-814A-1EAB6B8C274D}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_07\Exercises\Program.cs = Chapter_07\Exercises\Program.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter_08", "Chapter_08", "{7FF64714-167C-4D09-A0BB-E64E6B38E423}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_08\MyBGList\MyBGList.csproj", "{86B7DC01-820B-403E-A389-565B35A7BF63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{9FBFF8CC-E351-4169-8C19-82431A9244B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -128,6 +162,14 @@ Global
 		{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACCDB842-9030-42F7-BF74-943BA0A2797C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACCDB842-9030-42F7-BF74-943BA0A2797C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACCDB842-9030-42F7-BF74-943BA0A2797C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACCDB842-9030-42F7-BF74-943BA0A2797C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B7DC01-820B-403E-A389-565B35A7BF63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B7DC01-820B-403E-A389-565B35A7BF63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B7DC01-820B-403E-A389-565B35A7BF63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B7DC01-820B-403E-A389-565B35A7BF63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -152,6 +194,13 @@ Global
 		{D559F09C-25F6-4515-964E-A90A99B768AD} = {8DFE3088-B0DF-4C84-B9A1-030C58F0C4A4}
 		{F8D10F16-38FB-4144-A2A3-3A8FF1616CD3} = {6E256285-85A8-4485-9C59-10D4F42FAD12}
 		{FDC5F308-A4DE-47CC-AC9A-BBE480B174C2} = {6E256285-85A8-4485-9C59-10D4F42FAD12}
+		{ED59CF4D-80A1-4080-AC1D-1580D277D1AC} = {FDC5F308-A4DE-47CC-AC9A-BBE480B174C2}
+		{20726514-46BB-46B8-8498-3B0CC299B29C} = {FDC5F308-A4DE-47CC-AC9A-BBE480B174C2}
+		{C4E2FA0A-C0E3-432E-A9CF-F07A218DC4B3} = {FDC5F308-A4DE-47CC-AC9A-BBE480B174C2}
+		{ACCDB842-9030-42F7-BF74-943BA0A2797C} = {3E2EDCC2-A7E1-4A2F-8143-0B1E45512C28}
+		{87A6BDDF-56DB-4EBC-814A-1EAB6B8C274D} = {3E2EDCC2-A7E1-4A2F-8143-0B1E45512C28}
+		{86B7DC01-820B-403E-A389-565B35A7BF63} = {7FF64714-167C-4D09-A0BB-E64E6B38E423}
+		{9FBFF8CC-E351-4169-8C19-82431A9244B5} = {7FF64714-167C-4D09-A0BB-E64E6B38E423}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58E128FF-6460-4A49-9E95-9D8E08D888FC}

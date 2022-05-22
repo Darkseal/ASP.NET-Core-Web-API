@@ -20,7 +20,6 @@ namespace MyBGList.Controllers
                 new BoardGame() {
                     Id = 1,
                     Name = "Axis & Allies",
-                    Publisher = "Milton Bradley",
                     Year = 1981,
                     MinPlayers = 2,
                     MaxPlayers = 5
@@ -28,7 +27,6 @@ namespace MyBGList.Controllers
                 new BoardGame() {
                     Id = 2,
                     Name = "Citadels",
-                    Publisher = "Hans im Glück",
                     Year = 2000,
                     MinPlayers = 2,
                     MaxPlayers = 8
@@ -36,7 +34,6 @@ namespace MyBGList.Controllers
                 new BoardGame() {
                     Id = 3,
                     Name = "Terraforming Mars",
-                    Publisher = "FryxGames",
                     Year = 2016,
                     MinPlayers = 1,
                     MaxPlayers = 5

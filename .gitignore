@@ -1,23 +1,8 @@
-<<<<<<< HEAD
-# use glob syntax
-syntax: glob
+**/.tscache/**
+**/.vs/
 
-wwwroot/app/**
-wwwroot/bin/**
-wwwroot/js/**
-wwwroot/scripts/**
-wwwroot/styles/**
-wwwroot/dist/main-client.*
-ClientApp/dist/main-server.*
-
-node_modules/**
-[Ss]cripts/[Aa]pp/*.js
-[Ss]cripts/[Aa]pp_old/*.js
-
-[Mm]igrations/**
-
-.tscache/**
-.vs/
+## **/[Mm]igrations/**
+**/[Ll]ogs/**
 
 *.mwb.bak	# MySQL Workbench .BAK file
 *.dbmdl		# VS2010 Database Projects cache file
@@ -387,5 +372,3 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
->>>>>>> 4584b353e67bb142e570857ccd8679e29581917f
-/Chapter_10/AuthSample_old

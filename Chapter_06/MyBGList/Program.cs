@@ -22,7 +22,7 @@ builder.Services.AddCors(options => {
             cfg.AllowAnyHeader();
             cfg.AllowAnyMethod();
         });
-    });
+});
 
 builder.Services.AddControllers(options => {
     options.ModelBindingMessageProvider.SetValueIsInvalidAccessor(
@@ -99,7 +99,7 @@ app.MapGet("/error",
         var details = new ProblemDetails();
         details.Detail = exceptionHandler?.Error.Message;
         details.Extensions["traceId"] =
-            System.Diagnostics.Activity.Current?.Id 
+            System.Diagnostics.Activity.Current?.Id
               ?? context.TraceIdentifier;
         details.Type =
             "https://tools.ietf.org/html/rfc7231#section-6.6.1";
@@ -109,12 +109,12 @@ app.MapGet("/error",
 
 app.MapGet("/error/test",
     [EnableCors("AnyOrigin")]
-    [ResponseCache(NoStore = true)] () =>
+[ResponseCache(NoStore = true)] () =>
     { throw new Exception("test"); });
 
 app.MapGet("/cod/test",
     [EnableCors("AnyOrigin")]
-    [ResponseCache(NoStore = true)] () =>
+[ResponseCache(NoStore = true)] () =>
     Results.Text("<script>" +
         "window.alert('Your client supports JavaScript!" +
         "\\r\\n\\r\\n" +

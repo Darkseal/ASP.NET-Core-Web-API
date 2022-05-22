@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyBGList.DTO;
+using MyBGList.Models;
 
 namespace MyBGList.Controllers
 {
@@ -24,19 +25,16 @@ namespace MyBGList.Controllers
             new BoardGame() {
                 Id = 1,
                 Name = "Axis & Allies",
-                Publisher = "Milton Bradley",
                 Year = 1981
             },
             new BoardGame() {
                 Id = 2,
                 Name = "Citadels",
-                Publisher = "Hans im Glück",
                 Year = 2000
             },
             new BoardGame() {
                 Id = 3,
                 Name = "Terraforming Mars",
-                Publisher = "FryxGames",
                 Year = 2016
             }
         },
