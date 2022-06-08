@@ -2,49 +2,46 @@
 using Microsoft.EntityFrameworkCore;
 using MyBGList.DTO;
 using MyBGList.Models;
+using MyBGList.Extensions;
 using System.Linq.Expressions;
 using System.Linq.Dynamic.Core;
 using System.ComponentModel.DataAnnotations;
 using MyBGList.Attributes;
-using MyBGList.Constants;
-using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
 namespace MyBGList.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class BoardGamesController : ControllerBase
+    public class MechanicsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        private readonly ILogger<BoardGamesController> _logger;
+        private readonly ILogger<MechanicsController> _logger;
 
-        private readonly IMemoryCache _memoryCache;
+        private readonly IDistributedCache _distributedCache;
 
-        public BoardGamesController(
+        public MechanicsController(
             ApplicationDbContext context,
-            ILogger<BoardGamesController> logger,
-            IMemoryCache memoryCache)
+            ILogger<MechanicsController> logger,
+            IDistributedCache distributedCache)
         {
             _context = context;
             _logger = logger;
-            _memoryCache = memoryCache;
+            _distributedCache = distributedCache;
         }
 
-        [HttpGet(Name = "GetBoardGames")]
-        [ResponseCache(CacheProfileName = "Any-60")]
-        public async Task<RestDTO<BoardGame[]>> Get(
-            [FromQuery] RequestDTO<BoardGameDTO> input)
+        [HttpGet(Name = "GetMechanics")]
+        [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 120)] // Exercise 8.5.1
+        public async Task<RestDTO<Mechanic[]>> Get(
+            [FromQuery] RequestDTO<MechanicDTO> input)
         {
-            _logger.LogInformation(CustomLogEvents.BoardGamesController_Get,
-                "Get method started.");
-
-            BoardGame[]? result = null;
+            Mechanic[]? result = null;
             var cacheKey = $"{input.GetType()}-{JsonSerializer.Serialize(input)}";
-            if (!_memoryCache.TryGetValue<BoardGame[]>(cacheKey, out result))
+            if (!_distributedCache.TryGetValue<Mechanic[]>(cacheKey, out result))
             {
-                var query = _context.BoardGames.AsQueryable();
+                var query = _context.Mechanics.AsQueryable();
                 if (!string.IsNullOrEmpty(input.FilterQuery))
                     query = query.Where(b => b.Name.Contains(input.FilterQuery));
                 query = query
@@ -52,20 +49,20 @@ namespace MyBGList.Controllers
                         .Skip(input.PageIndex * input.PageSize)
                         .Take(input.PageSize);
                 result = await query.ToArrayAsync();
-                _memoryCache.Set(cacheKey, result, new TimeSpan(0, 0, 30));
+                _distributedCache.Set(cacheKey, result, new TimeSpan(0, 0, 30));
             }
 
-            return new RestDTO<BoardGame[]>()
+            return new RestDTO<Mechanic[]>()
             {
-                Data = result,
+                Data = result!,
                 PageIndex = input.PageIndex,
                 PageSize = input.PageSize,
-                RecordCount = await _context.BoardGames.CountAsync(),
+                RecordCount = await _context.Mechanics.CountAsync(),
                 Links = new List<LinkDTO> {
                     new LinkDTO(
                         Url.Action(
                             null,
-                            "BoardGames",
+                            "Mechanics",
                             new { input.PageIndex, input.PageSize },
                             Request.Scheme)!,
                         "self",
@@ -74,33 +71,31 @@ namespace MyBGList.Controllers
             };
         }
 
-        [HttpPost(Name = "UpdateBoardGame")]
+        [HttpPost(Name = "UpdateMechanic")]
         [ResponseCache(CacheProfileName = "NoCache")]
-        public async Task<RestDTO<BoardGame?>> Post(BoardGameDTO model)
+        public async Task<RestDTO<Mechanic?>> Post(MechanicDTO model)
         {
-            var boardgame = await _context.BoardGames
+            var mechanic = await _context.Mechanics
                 .Where(b => b.Id == model.Id)
                 .FirstOrDefaultAsync();
-            if (boardgame != null)
+            if (mechanic != null)
             {
                 if (!string.IsNullOrEmpty(model.Name))
-                    boardgame.Name = model.Name;
-                if (model.Year.HasValue && model.Year.Value > 0)
-                    boardgame.Year = model.Year.Value;
-                boardgame.LastModifiedDate = DateTime.Now;
-                _context.BoardGames.Update(boardgame);
+                    mechanic.Name = model.Name;
+                mechanic.LastModifiedDate = DateTime.Now;
+                _context.Mechanics.Update(mechanic);
                 await _context.SaveChangesAsync();
             };
 
-            return new RestDTO<BoardGame?>()
+            return new RestDTO<Mechanic?>()
             {
-                Data = boardgame,
+                Data = mechanic,
                 Links = new List<LinkDTO>
                 {
                     new LinkDTO(
                             Url.Action(
                                 null,
-                                "BoardGames",
+                                "Mechanics",
                                 model,
                                 Request.Scheme)!,
                             "self",
@@ -109,28 +104,28 @@ namespace MyBGList.Controllers
             };
         }
 
-        [HttpDelete(Name = "DeleteBoardGame")]
+        [HttpDelete(Name = "DeleteMechanic")]
         [ResponseCache(CacheProfileName = "NoCache")]
-        public async Task<RestDTO<BoardGame?>> Delete(int id)
+        public async Task<RestDTO<Mechanic?>> Delete(int id)
         {
-            var boardgame = await _context.BoardGames
+            var mechanic = await _context.Mechanics
                 .Where(b => b.Id == id)
                 .FirstOrDefaultAsync();
-            if (boardgame != null)
+            if (mechanic != null)
             {
-                _context.BoardGames.Remove(boardgame);
+                _context.Mechanics.Remove(mechanic);
                 await _context.SaveChangesAsync();
             };
 
-            return new RestDTO<BoardGame?>()
+            return new RestDTO<Mechanic?>()
             {
-                Data = boardgame,
+                Data = mechanic,
                 Links = new List<LinkDTO>
                 {
                     new LinkDTO(
                             Url.Action(
                                 null,
-                                "BoardGames",
+                                "Mechanics",
                                 id,
                                 Request.Scheme)!,
                             "self",

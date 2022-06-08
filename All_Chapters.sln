@@ -131,6 +131,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_08\MyBGList\MyBGList.csproj", "{86B7DC01-820B-403E-A389-565B35A7BF63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{9FBFF8CC-E351-4169-8C19-82431A9244B5}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_08\Exercises\BoardGamesController.cs = Chapter_08\Exercises\BoardGamesController.cs
+		Chapter_08\Exercises\MechanicsController.cs = Chapter_08\Exercises\MechanicsController.cs
+		Chapter_08\Exercises\Program.cs = Chapter_08\Exercises\Program.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

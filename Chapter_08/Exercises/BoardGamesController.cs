@@ -33,7 +33,7 @@ namespace MyBGList.Controllers
         }
 
         [HttpGet(Name = "GetBoardGames")]
-        [ResponseCache(CacheProfileName = "Any-60")]
+        [ResponseCache(CacheProfileName = "Client-120")] // Exercise 8.5.2
         public async Task<RestDTO<BoardGame[]>> Get(
             [FromQuery] RequestDTO<BoardGameDTO> input)
         {
@@ -55,12 +55,22 @@ namespace MyBGList.Controllers
                 _memoryCache.Set(cacheKey, result, new TimeSpan(0, 0, 30));
             }
 
+            // Exercise 8.5.4 (start)
+            int recordCount = 0;
+            var cacheKey_RecordCount = $"{input.GetType()}-RecordCount";
+            if (!_memoryCache.TryGetValue<int>(cacheKey_RecordCount, out recordCount))
+            {
+                recordCount = await _context.BoardGames.CountAsync();
+                _memoryCache.Set(cacheKey_RecordCount, recordCount, new TimeSpan(0, 0, 120));
+            }
+            // Exercise 8.5.4 (end)
+
             return new RestDTO<BoardGame[]>()
             {
                 Data = result,
                 PageIndex = input.PageIndex,
                 PageSize = input.PageSize,
-                RecordCount = await _context.BoardGames.CountAsync(),
+                RecordCount = recordCount, // Exercise 8.5.4
                 Links = new List<LinkDTO> {
                     new LinkDTO(
                         Url.Action(

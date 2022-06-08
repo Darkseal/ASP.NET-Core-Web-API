@@ -80,6 +80,8 @@ builder.Services.AddControllers(options => {
         new CacheProfile() { NoStore = true });
     options.CacheProfiles.Add("Any-60",
         new CacheProfile() { Location = ResponseCacheLocation.Any, Duration = 60 });
+    options.CacheProfiles.Add("Client-120", // Exercise 8.5.2
+        new CacheProfile() { Location = ResponseCacheLocation.Client, Duration = 120 });
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -99,8 +101,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddResponseCaching(options =>
 {
-    options.MaximumBodySize = 32 * 1024 * 1024;
-    options.SizeLimit = 50 * 1024 * 1024;
+    options.MaximumBodySize = 128 * 1024 * 1024; // Exercise 8.5.3
+    options.SizeLimit = 200 * 1024 * 1024; // Exercise 8.5.3
+    options.UseCaseSensitivePaths = true; // Exercise 8.5.3
 });
 
 builder.Services.AddMemoryCache();
@@ -112,7 +115,7 @@ builder.Services.AddDistributedSqlServerCache(options =>
     options.ConnectionString =
         builder.Configuration.GetConnectionString("DefaultConnection");
     options.SchemaName = "dbo";
-    options.TableName = "AppCache";
+    options.TableName = "SQLCache"; // Exercise 8.5.5
 });
 
 // Redis Distributed Cache
@@ -121,7 +124,6 @@ builder.Services.AddDistributedSqlServerCache(options =>
 //{
 //    options.Configuration = builder.Configuration["Redis:Configuration"];
 //});
-
 
 var app = builder.Build();
 
