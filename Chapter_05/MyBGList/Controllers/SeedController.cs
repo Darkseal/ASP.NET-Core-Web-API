@@ -17,12 +17,12 @@ namespace MyBGList.Controllers
 
         private readonly IWebHostEnvironment _env;
 
-        private readonly ILogger<BoardGamesController> _logger;
+        private readonly ILogger<SeedController> _logger;
 
         public SeedController(
             ApplicationDbContext context,
             IWebHostEnvironment env,
-            ILogger<BoardGamesController> logger)
+            ILogger<SeedController> logger)
         {
             _context = context;
             _env = env;

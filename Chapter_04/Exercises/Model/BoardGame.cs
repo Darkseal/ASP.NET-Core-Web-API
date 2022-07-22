@@ -15,7 +15,7 @@ namespace MyBGList.Models
         public int PublisherId { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(200)]
         public string Name { get; set; } = null!;
 
         [Required]

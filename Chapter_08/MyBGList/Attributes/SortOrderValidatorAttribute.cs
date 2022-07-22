@@ -4,7 +4,7 @@ namespace MyBGList.Attributes
 {
     public class SortOrderValidatorAttribute : ValidationAttribute
     {
-        public string[] AllowedValues { get; set; } = 
+        public string[] AllowedValues { get; } = 
             new[] { "ASC", "DESC" };
 
         public SortOrderValidatorAttribute()
