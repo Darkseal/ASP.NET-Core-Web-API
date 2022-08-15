@@ -57,7 +57,6 @@ namespace MyBGList.Controllers
                         newUser, input.Password);
                     if (result.Succeeded)
                     {
-                        // await _userManager.AddToRoleAsync(newUser, "User");
                         _logger.LogInformation(
                             "User {userName} ({email}) has been created.",
                         newUser.UserName, newUser.Email);
@@ -115,9 +114,9 @@ namespace MyBGList.Controllers
                         var claims = new List<Claim>();
                         claims.Add(new Claim(
                             ClaimTypes.Name, user.UserName));
-                        //claims.AddRange(
-                        //    (await _userManager.GetRolesAsync(user))
-                        //        .Select(r => new Claim(ClaimTypes.Role, r)));
+                        claims.AddRange(
+                            (await _userManager.GetRolesAsync(user))
+                                .Select(r => new Claim(ClaimTypes.Role, r)));
 
                         var jwtObject = new JwtSecurityToken(
                             issuer: _configuration["JWT:Issuer"],

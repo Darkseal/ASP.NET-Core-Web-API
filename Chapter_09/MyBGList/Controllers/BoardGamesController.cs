@@ -9,6 +9,7 @@ using MyBGList.Attributes;
 using MyBGList.Constants;
 using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyBGList.Controllers
 {
@@ -74,6 +75,7 @@ namespace MyBGList.Controllers
             };
         }
 
+        [Authorize(Roles = RoleNames.Moderator)]
         [HttpPost(Name = "UpdateBoardGame")]
         [ResponseCache(CacheProfileName = "NoCache")]
         public async Task<RestDTO<BoardGame?>> Post(BoardGameDTO model)
