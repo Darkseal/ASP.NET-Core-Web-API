@@ -141,6 +141,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter_09", "Chapter_09", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_09\MyBGList\MyBGList.csproj", "{639AF289-242A-4369-9F88-C9F0C5CE537A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{CA456D36-8F7A-431D-9DC8-DECBE8511EB9}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_09\Exercises\Program.cs = Chapter_09\Exercises\Program.cs
+		Chapter_09\Exercises\RoleNames.cs = Chapter_09\Exercises\RoleNames.cs
+		Chapter_09\Exercises\SeedController.cs = Chapter_09\Exercises\SeedController.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -215,6 +222,7 @@ Global
 		{86B7DC01-820B-403E-A389-565B35A7BF63} = {7FF64714-167C-4D09-A0BB-E64E6B38E423}
 		{9FBFF8CC-E351-4169-8C19-82431A9244B5} = {7FF64714-167C-4D09-A0BB-E64E6B38E423}
 		{639AF289-242A-4369-9F88-C9F0C5CE537A} = {9ED12245-8522-4DD7-95F2-BD11BB781E47}
+		{CA456D36-8F7A-431D-9DC8-DECBE8511EB9} = {9ED12245-8522-4DD7-95F2-BD11BB781E47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58E128FF-6460-4A49-9E95-9D8E08D888FC}

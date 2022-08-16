@@ -12,7 +12,6 @@ using MyBGList.Constants;
 using MyBGList.Models;
 using Serilog;
 using Serilog.Sinks.MSSqlServer;
-using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging
@@ -170,7 +169,7 @@ builder.Services.AddAuthorization(options =>
                 ctx.User.HasClaim(c => c.Type == ClaimTypes.DateOfBirth)
                 && DateTime.ParseExact(
                     "yyyyMMdd",
-                    ctx.User.Claims.First(c => 
+                    ctx.User.Claims.First(c =>
                         c.Type == ClaimTypes.DateOfBirth).Value,
                     System.Globalization.CultureInfo.InvariantCulture)
                     >= DateTime.Now.AddYears(-18)));
@@ -318,8 +317,17 @@ app.MapGet("/auth/test/2",
 
 app.MapGet("/auth/test/3",
     [Authorize(Roles = RoleNames.Administrator)]
-    [EnableCors("AnyOrigin")]
-    [ResponseCache(NoStore = true)] () =>
+[EnableCors("AnyOrigin")]
+[ResponseCache(NoStore = true)] () =>
+    {
+        return Results.Ok("You are authorized!");
+    });
+
+// Exercise 9.5.4
+app.MapGet("/auth/test/4",
+    [Authorize(Roles = RoleNames.SuperAdmin)]
+[EnableCors("AnyOrigin")]
+[ResponseCache(NoStore = true)] () =>
     {
         return Results.Ok("You are authorized!");
     });
