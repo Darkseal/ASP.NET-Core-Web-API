@@ -10,7 +10,7 @@ namespace MyBGList.Attributes
             OpenApiParameter parameter, 
             ParameterFilterContext context)
         {
-            var attributes = context.ParameterInfo
+            var attributes = context.ParameterInfo?
                 .GetCustomAttributes(true)
                 .Union(
                     context.ParameterInfo.ParameterType.GetProperties()
@@ -19,15 +19,18 @@ namespace MyBGList.Attributes
                     )
                 .OfType<SortColumnValidatorAttribute>();
 
-            foreach (var attribute in attributes)
+            if (attributes != null)
             {
-                var pattern = attribute.EntityType
-                    .GetProperties()
-                    .Select(p => p.Name);
-                parameter.Schema.Extensions.Add(
-                    "pattern",
-                    new OpenApiString(string.Join("|", pattern))
-                    );
+                foreach (var attribute in attributes)
+                {
+                    var pattern = attribute.EntityType
+                        .GetProperties()
+                        .Select(p => p.Name);
+                    parameter.Schema.Extensions.Add(
+                        "pattern",
+                        new OpenApiString(string.Join("|", pattern))
+                        );
+                }
             }
         }
     }
