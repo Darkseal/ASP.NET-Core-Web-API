@@ -8,13 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Model - Copia\**" />
-    <Content Remove="Model - Copia\**" />
-    <EmbeddedResource Remove="Model - Copia\**" />
-    <None Remove="Model - Copia\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Controllers\ErrorController.cs" />
     <Compile Remove="Controllers\WeatherForecastController.cs" />
     <Compile Remove="WeatherForecast.cs" />

@@ -1,6 +1,6 @@
 ﻿using MyBGList.Attributes;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using DefaultValueAttribute = System.ComponentModel.DefaultValueAttribute;
 
 namespace MyBGList.DTO
 {
@@ -29,8 +29,8 @@ namespace MyBGList.DTO
             var validator = new SortColumnValidatorAttribute(typeof(T));
             var result = validator
                 .GetValidationResult(SortColumn, validationContext);
-            return (result != null) 
-                ? new [] { result } 
+            return (result != null)
+                ? new[] { result }
                 : new ValidationResult[0];
         }
     }
