@@ -151,6 +151,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter_10", "Chapter_10", "{CD4A6C4B-93E4-4B3C-A7F6-9759203F0910}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{2531D970-010D-4D1A-9B5B-61BD2167EFEF}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_10\Exercises\10.5.1-GraphQL.Query.json = Chapter_10\Exercises\10.5.1-GraphQL.Query.json
+		Chapter_10\Exercises\10.5.2-GraphQL.Query-Mutation.json = Chapter_10\Exercises\10.5.2-GraphQL.Query-Mutation.json
+		Chapter_10\Exercises\grpc.proto = Chapter_10\Exercises\grpc.proto
+		Chapter_10\Exercises\GrpcController.cs = Chapter_10\Exercises\GrpcController.cs
+		Chapter_10\Exercises\GrpcService.cs = Chapter_10\Exercises\GrpcService.cs
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_10\MyBGList\MyBGList.csproj", "{F64591D2-2D08-4914-965C-386BB27A0FB9}"
 EndProject

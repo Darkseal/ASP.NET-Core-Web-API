@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option csharp_namespace = "MyBGList.gRPC";
+
+package Grpc;
+
+service Grpc {
+  rpc GetBoardGame (BoardGameRequest) returns (BoardGameResponse);
+  rpc UpdateBoardGame (UpdateBoardGameRequest) returns (BoardGameResponse);
+  rpc GetDomain (DomainRequest) returns (DomainResponse);
+  rpc UpdateDomain (UpdateDomainRequest) returns (DomainResponse);
+  rpc GetMechanic (MechanicRequest) returns (MechanicResponse);
+  rpc UpdateMechanic (UpdateMechanicRequest) returns (MechanicResponse);
+}
+
+message BoardGameRequest {
+  int32 id = 1;
+}
+
+message UpdateBoardGameRequest {
+  int32 id = 1;
+  string name = 2;
+}
+
+message BoardGameResponse {
+  int32 id = 1;
+  string name = 2;
+  int32 year = 3;
+}
+
+message DomainRequest {
+  int32 id = 1;
+}
+
+message UpdateDomainRequest {
+  int32 id = 1;
+  string name = 2;
+}
+
+message DomainResponse {
+  int32 id = 1;
+  string name = 2;
+}
+
+message MechanicRequest {
+  int32 id = 1;
+}
+
+message UpdateMechanicRequest {
+  int32 id = 1;
+  string name = 2;
+}
+
+message MechanicResponse {
+  int32 id = 1;
+  string name = 2;
+}

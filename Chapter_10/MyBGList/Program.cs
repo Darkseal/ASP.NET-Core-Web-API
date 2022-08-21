@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using MyBGList.Attributes;
 using MyBGList.Constants;
 using MyBGList.GraphQL;
+using MyBGList.gRPC;
 using MyBGList.Models;
 using Serilog;
 using Serilog.Sinks.MSSqlServer;
@@ -134,8 +135,11 @@ builder.Services.AddGraphQLServer()
     .AddAuthorization()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
+    .AddProjections()
     .AddFiltering()
     .AddSorting();
+
+builder.Services.AddGrpc();
 
 builder.Services.AddIdentity<ApiUser, IdentityRole>(options =>
 {
@@ -246,6 +250,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapGraphQL("/graphql");
+
+app.MapGrpcService<GrpcService>();
 
 // Adds a default cache-control directive
 app.Use((context, next) =>

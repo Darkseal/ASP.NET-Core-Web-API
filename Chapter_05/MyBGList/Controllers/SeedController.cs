@@ -41,7 +41,8 @@ namespace MyBGList.Controllers
                 HasHeaderRecord = true,
                 Delimiter = ";",
             };
-            using var reader = new StreamReader(Path.Combine(_env.ContentRootPath, "Data/bgg_dataset.csv"));
+            using var reader = new StreamReader(
+                System.IO.Path.Combine(_env.ContentRootPath, "Data/bgg_dataset.csv"));
             using var csv = new CsvReader(reader, config);
             var existingBoardGames = await _context.BoardGames
                 .ToDictionaryAsync(bg => bg.Id);

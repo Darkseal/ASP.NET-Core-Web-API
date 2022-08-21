@@ -6,6 +6,7 @@ namespace MyBGList.GraphQL
     {
         [Serial]
         [UsePaging]
+        [UseProjection]
         [UseFiltering]
         [UseSorting]
         public IQueryable<BoardGame> GetBoardGames(
@@ -14,6 +15,7 @@ namespace MyBGList.GraphQL
 
         [Serial]
         [UsePaging]
+        [UseProjection]
         [UseFiltering]
         [UseSorting]
         public IQueryable<Domain> GetDomains(
@@ -22,6 +24,7 @@ namespace MyBGList.GraphQL
 
         [Serial]
         [UsePaging]
+        [UseProjection]
         [UseFiltering]
         [UseSorting]
         public IQueryable<Mechanic> GetMechanics(

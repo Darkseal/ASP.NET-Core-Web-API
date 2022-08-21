@@ -1,0 +1,27 @@
+query {
+  boardGames(
+    where: { name: { startsWith: "war" } },  
+    order: { name: ASC }, 
+    first:10 ) { 
+    nodes {
+      id
+      name
+      year
+      minPlayers
+      maxPlayers
+      playTime
+      boardGames_Domains {
+        domain {
+          id
+          name
+        }
+      }
+      boardGames_Mechanics {
+        mechanic {
+          id
+          name
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+query {
+  boardGames(
+    where: { name: { eq: "Axis & Allies" }, year: { eq: 2004 }  }
+  ) { 
+    nodes { 
+      id
+    }
+  }
+}
+
+
+mutation {
+  updateBoardGame(model: { 
+    id:10093
+    name:"Axis & Allies: Revised"
+   }) {
+     id,
+     name
+  }
+}
