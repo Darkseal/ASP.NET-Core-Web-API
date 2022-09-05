@@ -42,6 +42,11 @@ namespace MyBGList.Controllers
             _signInManager = signInManager;
         }
 
+        /// <summary>
+        /// Registers a new user.
+        /// </summary>
+        /// <param name="input">A DTO containing the user data.</param>
+        /// <returns>A 201 – Created Status Code in case of success.</returns>
         [HttpPost]
         [ResponseCache(CacheProfileName = "NoCache")]
         public async Task<ActionResult> Register(RegisterDTO input)
@@ -65,7 +70,7 @@ namespace MyBGList.Controllers
                     }
                     else
                         throw new Exception(
-                            string.Format("Error: {0}", string.Join(" ", 
+                            string.Format("Error: {0}", string.Join(" ",
                                 result.Errors.Select(e => e.Description))));
                 }
                 else
@@ -91,6 +96,11 @@ namespace MyBGList.Controllers
             }
         }
 
+        /// <summary>
+        /// Performs a user login.
+        /// </summary>
+        /// <param name="input">A DTO containing the user's credentials.</param>
+        /// <returns>A 200 – OK Status Code in case of success.</returns>
         [HttpPost]
         [ResponseCache(CacheProfileName = "NoCache")]
         public async Task<ActionResult> Login(LoginDTO input)

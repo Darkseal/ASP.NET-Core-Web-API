@@ -65,7 +65,8 @@ namespace MyBGList.Controllers
                     }
                     else
                         throw new Exception(
-                            $"Error: {string.Join(" ", result.Errors.Select(e => e.Description))}");
+                            string.Format("Error: {0}", string.Join(" ",
+                                result.Errors.Select(e => e.Description))));
                 }
                 else
                 {

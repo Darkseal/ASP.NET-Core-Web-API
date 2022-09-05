@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "MyBGList.gRPC";
+
+package Grpc;
+
+service Grpc {
+  rpc GetBoardGame (BoardGameRequest) returns (BoardGameResponse);
+  rpc UpdateBoardGame (UpdateBoardGameRequest) returns (BoardGameResponse);
+}
+
+message BoardGameRequest {
+  int32 id = 1;
+}
+
+message UpdateBoardGameRequest {
+  int32 id = 1;
+  string name = 2;
+}
+
+message BoardGameResponse {
+  int32 id = 1;
+  string name = 2;
+  int32 year = 3;
+}
