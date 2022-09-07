@@ -47,8 +47,14 @@ namespace MyBGList.Controllers
         /// </summary>
         /// <param name="input">A DTO containing the user data.</param>
         /// <returns>A 201 – Created Status Code in case of success.</returns>
+        /// <response code="201">User has been registered</response>
+        /// <response code="400">Invalid data</response>
+        /// <response code="500">An error occurred</response>
         [HttpPost]
         [ResponseCache(CacheProfileName = "NoCache")]
+        [ProducesResponseType(typeof(string), 201)]
+        [ProducesResponseType(typeof(BadRequestObjectResult), 400)]
+        [ProducesResponseType(typeof(ProblemDetails), 500)]
         public async Task<ActionResult> Register(RegisterDTO input)
         {
             try
@@ -100,9 +106,15 @@ namespace MyBGList.Controllers
         /// Performs a user login.
         /// </summary>
         /// <param name="input">A DTO containing the user's credentials.</param>
-        /// <returns>A 200 – OK Status Code in case of success.</returns>
+        /// <returns>The Bearer Token (in JWT format).</returns>
+        /// <response code="200">User has been logged in</response>
+        /// <response code="400">Login failed (bad request)</response>
+        /// <response code="401">Login failed (unauthorized)</response>
         [HttpPost]
         [ResponseCache(CacheProfileName = "NoCache")]
+        [ProducesResponseType(typeof(string), 200)]
+        [ProducesResponseType(typeof(BadRequestObjectResult), 400)]
+        [ProducesResponseType(typeof(ProblemDetails), 401)]
         public async Task<ActionResult> Login(LoginDTO input)
         {
             try
