@@ -12,6 +12,7 @@ using MyBGList.Constants;
 using MyBGList.GraphQL;
 using MyBGList.gRPC;
 using MyBGList.Models;
+using MyBGList.Swagger;
 using Serilog;
 using Serilog.Sinks.MSSqlServer;
 using Swashbuckle.AspNetCore.Annotations;
@@ -100,7 +101,7 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    var xmlFilename = 
+    var xmlFilename =
         $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(System.IO.Path.Combine(
         AppContext.BaseDirectory, xmlFilename));
@@ -119,22 +120,23 @@ builder.Services.AddSwaggerGen(options =>
         BearerFormat = "JWT",
         Scheme = "bearer"
     });
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Name = "Bearer",
-                In = ParameterLocation.Header,
-                Reference = new OpenApiReference
-                {
-                    Type=ReferenceType.SecurityScheme,
-                    Id="Bearer"
-                }
-            },
-            new string[]{}
-        }
-    });
+    //options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    //{
+    //    {
+    //        new OpenApiSecurityScheme
+    //        {
+    //            Name = "Bearer",
+    //            In = ParameterLocation.Header,
+    //            Reference = new OpenApiReference
+    //            {
+    //                Type=ReferenceType.SecurityScheme,
+    //                Id="Bearer"
+    //            }
+    //        },
+    //        new string[]{}
+    //    }
+    //});
+    options.OperationFilter<AuthRequirementFilter>();
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -279,7 +281,7 @@ app.Use((context, next) =>
 // Minimal API
 app.MapGet("/error",
     [EnableCors("AnyOrigin")]
-    [ResponseCache(NoStore = true)] (HttpContext context) =>
+[ResponseCache(NoStore = true)] (HttpContext context) =>
     {
         var exceptionHandler =
             context.Features.Get<IExceptionHandlerPathFeature>();
@@ -303,7 +305,7 @@ app.MapGet("/error",
 
 app.MapGet("/error/test",
     [EnableCors("AnyOrigin")]
-[   ResponseCache(NoStore = true)] () =>
+[ResponseCache(NoStore = true)] () =>
     { throw new Exception("test"); });
 
 app.MapGet("/cod/test",
@@ -337,8 +339,8 @@ app.MapGet("/cache/test/2",
 
 app.MapGet("/auth/test/1",
     [Authorize]
-    [EnableCors("AnyOrigin")]
-    [SwaggerOperation(
+[EnableCors("AnyOrigin")]
+[SwaggerOperation(
         Tags = new[] { "Auth" },
         Summary = "Auth test #1 (authenticated users).",
         Description = "Returns 200 - OK if called by " +
@@ -352,8 +354,8 @@ app.MapGet("/auth/test/1",
 
 app.MapGet("/auth/test/2",
     [Authorize(Roles = RoleNames.Moderator)]
-    [EnableCors("AnyOrigin")]
-    [SwaggerOperation(
+[EnableCors("AnyOrigin")]
+[SwaggerOperation(
         Tags = new[] { "Auth" },
         Summary = "Auth test #2 (Moderator role).",
         Description = "Returns 200 - OK status code if called by " +
@@ -365,8 +367,8 @@ app.MapGet("/auth/test/2",
 
 app.MapGet("/auth/test/3",
     [Authorize(Roles = RoleNames.Administrator)]
-    [EnableCors("AnyOrigin")]
-    [SwaggerOperation(
+[EnableCors("AnyOrigin")]
+[SwaggerOperation(
         Tags = new[] { "Auth" },
         Summary = "Auth test #3 (Administrator role).",
         Description = "Returns 200 - OK if called by " +
