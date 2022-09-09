@@ -124,6 +124,8 @@ builder.Services.AddSwaggerGen(options =>
         {
             new OpenApiSecurityScheme
             {
+                Name = "Bearer",
+                In = ParameterLocation.Header,
                 Reference = new OpenApiReference
                 {
                     Type=ReferenceType.SecurityScheme,
@@ -277,7 +279,7 @@ app.Use((context, next) =>
 // Minimal API
 app.MapGet("/error",
     [EnableCors("AnyOrigin")]
-[ResponseCache(NoStore = true)] (HttpContext context) =>
+    [ResponseCache(NoStore = true)] (HttpContext context) =>
     {
         var exceptionHandler =
             context.Features.Get<IExceptionHandlerPathFeature>();
@@ -301,7 +303,7 @@ app.MapGet("/error",
 
 app.MapGet("/error/test",
     [EnableCors("AnyOrigin")]
-[ResponseCache(NoStore = true)] () =>
+[   ResponseCache(NoStore = true)] () =>
     { throw new Exception("test"); });
 
 app.MapGet("/cod/test",
@@ -334,12 +336,13 @@ app.MapGet("/cache/test/2",
     });
 
 app.MapGet("/auth/test/1",
-[Authorize]
-[EnableCors("AnyOrigin")]
-[SwaggerOperation(
-    Summary = "Auth test #1 (authenticated users).",
-    Description = "Returns 200 - OK if called by " +
-    "an authenticated user regardless of its role(s).")]
+    [Authorize]
+    [EnableCors("AnyOrigin")]
+    [SwaggerOperation(
+        Tags = new[] { "Auth" },
+        Summary = "Auth test #1 (authenticated users).",
+        Description = "Returns 200 - OK if called by " +
+        "an authenticated user regardless of its role(s).")]
 [SwaggerResponse(StatusCodes.Status200OK, "Authorized")]
 [SwaggerResponse(StatusCodes.Status401Unauthorized, "Not authorized")]
 [ResponseCache(NoStore = true)] () =>
@@ -348,24 +351,26 @@ app.MapGet("/auth/test/1",
     });
 
 app.MapGet("/auth/test/2",
-[Authorize(Roles = RoleNames.Moderator)]
-[EnableCors("AnyOrigin")]
-[SwaggerOperation(
-    Summary = "Auth test #2 (Moderator role).",
-    Description = "Returns 200 - OK status code if called by " +
-    "an authenticated user assigned to the Moderator role.")]
+    [Authorize(Roles = RoleNames.Moderator)]
+    [EnableCors("AnyOrigin")]
+    [SwaggerOperation(
+        Tags = new[] { "Auth" },
+        Summary = "Auth test #2 (Moderator role).",
+        Description = "Returns 200 - OK status code if called by " +
+        "an authenticated user assigned to the Moderator role.")]
 [ResponseCache(NoStore = true)] () =>
     {
         return Results.Ok("You are authorized!");
     });
 
 app.MapGet("/auth/test/3",
-[Authorize(Roles = RoleNames.Administrator)]
-[EnableCors("AnyOrigin")]
-[SwaggerOperation(
-    Summary = "Auth test #3 (Administrator role).",
-    Description = "Returns 200 - OK if called by " +
-    "an authenticated user assigned to the Administrator role.")]
+    [Authorize(Roles = RoleNames.Administrator)]
+    [EnableCors("AnyOrigin")]
+    [SwaggerOperation(
+        Tags = new[] { "Auth" },
+        Summary = "Auth test #3 (Administrator role).",
+        Description = "Returns 200 - OK if called by " +
+        "an authenticated user assigned to the Administrator role.")]
 [ResponseCache(NoStore = true)] () =>
     {
         return Results.Ok("You are authorized!");
