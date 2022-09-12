@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using MyBGList.Attributes;
 using MyBGList.Constants;
 using MyBGList.Models;
+using MyBGList.Swagger;
 using Serilog;
 using Serilog.Sinks.MSSqlServer;
 using System.Security.Claims;
@@ -22,7 +22,8 @@ builder.Logging
     .AddApplicationInsights(builder
         .Configuration["Azure:ApplicationInsights:InstrumentationKey"]);
 
-builder.Host.UseSerilog((ctx, lc) => {
+builder.Host.UseSerilog((ctx, lc) =>
+{
     lc.ReadFrom.Configuration(ctx.Configuration);
     lc.Enrich.WithMachineName();
     lc.Enrich.WithThreadId();
@@ -53,26 +54,30 @@ builder.Host.UseSerilog((ctx, lc) => {
             }
         }
         );
-    },
+},
     writeToProviders: true);
 
 // Add services to the container.
 
-builder.Services.AddCors(options => {
-    options.AddDefaultPolicy(cfg => {
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(cfg =>
+    {
         cfg.WithOrigins(builder.Configuration["AllowedOrigins"]);
         cfg.AllowAnyHeader();
         cfg.AllowAnyMethod();
     });
     options.AddPolicy(name: "AnyOrigin",
-        cfg => {
+        cfg =>
+        {
             cfg.AllowAnyOrigin();
             cfg.AllowAnyHeader();
             cfg.AllowAnyMethod();
         });
 });
 
-builder.Services.AddControllers(options => {
+builder.Services.AddControllers(options =>
+{
     options.ModelBindingMessageProvider.SetValueIsInvalidAccessor(
         (x) => $"The value '{x}' is invalid.");
     options.ModelBindingMessageProvider.SetValueMustBeANumberAccessor(
@@ -82,14 +87,15 @@ builder.Services.AddControllers(options => {
     options.ModelBindingMessageProvider.SetMissingKeyOrValueAccessor(
         () => $"A value is required.");
 
-    options.CacheProfiles.Add("NoCache", 
+    options.CacheProfiles.Add("NoCache",
         new CacheProfile() { NoStore = true });
     options.CacheProfiles.Add("Any-60",
         new CacheProfile() { Location = ResponseCacheLocation.Any, Duration = 60 });
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options => {
+builder.Services.AddSwaggerGen(options =>
+{
     options.ParameterFilter<SortColumnFilter>();
     options.ParameterFilter<SortOrderFilter>();
 
@@ -133,7 +139,8 @@ builder.Services.AddIdentity<ApiUser, IdentityRole>(options =>
 })
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddAuthentication(options => {
+builder.Services.AddAuthentication(options =>
+{
     options.DefaultAuthenticateScheme =
     options.DefaultChallengeScheme =
     options.DefaultForbidScheme =
@@ -141,7 +148,8 @@ builder.Services.AddAuthentication(options => {
     options.DefaultSignInScheme =
     options.DefaultSignOutScheme =
         JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options => {
+}).AddJwtBearer(options =>
+{
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -170,7 +178,7 @@ builder.Services.AddAuthorization(options =>
                 ctx.User.HasClaim(c => c.Type == ClaimTypes.DateOfBirth)
                 && DateTime.ParseExact(
                     "yyyyMMdd",
-                    ctx.User.Claims.First(c => 
+                    ctx.User.Claims.First(c =>
                         c.Type == ClaimTypes.DateOfBirth).Value,
                     System.Globalization.CultureInfo.InvariantCulture)
                     >= DateTime.Now.AddYears(-18)));
@@ -244,7 +252,7 @@ app.Use((context, next) =>
 // Minimal API
 app.MapGet("/error",
     [EnableCors("AnyOrigin")]
-    [ResponseCache(NoStore = true)] (HttpContext context) =>
+[ResponseCache(NoStore = true)] (HttpContext context) =>
     {
         var exceptionHandler =
             context.Features.Get<IExceptionHandlerPathFeature>();
@@ -310,16 +318,16 @@ app.MapGet("/auth/test/1",
 
 app.MapGet("/auth/test/2",
     [Authorize(Roles = RoleNames.Moderator)]
-    [EnableCors("AnyOrigin")]
-    [ResponseCache(NoStore = true)] () =>
+[EnableCors("AnyOrigin")]
+[ResponseCache(NoStore = true)] () =>
     {
         return Results.Ok("You are authorized!");
     });
 
 app.MapGet("/auth/test/3",
     [Authorize(Roles = RoleNames.Administrator)]
-    [EnableCors("AnyOrigin")]
-    [ResponseCache(NoStore = true)] () =>
+[EnableCors("AnyOrigin")]
+[ResponseCache(NoStore = true)] () =>
     {
         return Results.Ok("You are authorized!");
     });

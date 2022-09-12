@@ -1,13 +1,14 @@
 ﻿using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using MyBGList.Attributes;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace MyBGList.Attributes
+namespace MyBGList.Swagger
 {
-    public class SortColumnFilter : IParameterFilter
+    public class SortOrderFilter : IParameterFilter
     {
         public void Apply(
-            OpenApiParameter parameter, 
+            OpenApiParameter parameter,
             ParameterFilterContext context)
         {
             var attributes = context.ParameterInfo?
@@ -17,18 +18,15 @@ namespace MyBGList.Attributes
                     .Where(p => p.Name == parameter.Name)
                     .SelectMany(p => p.GetCustomAttributes(true))
                     )
-                .OfType<SortColumnValidatorAttribute>();
+                .OfType<SortOrderValidatorAttribute>();
 
             if (attributes != null)
             {
                 foreach (var attribute in attributes)
                 {
-                    var pattern = attribute.EntityType
-                        .GetProperties()
-                        .Select(p => p.Name);
                     parameter.Schema.Extensions.Add(
                         "pattern",
-                        new OpenApiString(string.Join("|", pattern))
+                        new OpenApiString(string.Join("|", attribute.AllowedValues))
                         );
                 }
             }

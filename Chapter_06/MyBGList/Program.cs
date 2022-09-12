@@ -2,29 +2,32 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyBGList.Attributes;
 using MyBGList.Models;
-using System.Text.Json;
+using MyBGList.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddCors(options => {
-    options.AddDefaultPolicy(cfg => {
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(cfg =>
+    {
         cfg.WithOrigins(builder.Configuration["AllowedOrigins"]);
         cfg.AllowAnyHeader();
         cfg.AllowAnyMethod();
     });
     options.AddPolicy(name: "AnyOrigin",
-        cfg => {
+        cfg =>
+        {
             cfg.AllowAnyOrigin();
             cfg.AllowAnyHeader();
             cfg.AllowAnyMethod();
         });
 });
 
-builder.Services.AddControllers(options => {
+builder.Services.AddControllers(options =>
+{
     options.ModelBindingMessageProvider.SetValueIsInvalidAccessor(
         (x) => $"The value '{x}' is invalid.");
     options.ModelBindingMessageProvider.SetValueMustBeANumberAccessor(
@@ -36,7 +39,8 @@ builder.Services.AddControllers(options => {
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options => {
+builder.Services.AddSwaggerGen(options =>
+{
     options.ParameterFilter<SortColumnFilter>();
     options.ParameterFilter<SortOrderFilter>();
 });
