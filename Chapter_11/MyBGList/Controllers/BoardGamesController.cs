@@ -41,7 +41,10 @@ namespace MyBGList.Controllers
             Description = "Retrieves a list of board games " +
             "with custom paging, sorting, and filtering rules.")]
         public async Task<RestDTO<BoardGame[]>> Get(
-            [FromQuery] RequestDTO<BoardGameDTO> input)
+            [FromQuery]
+            [SwaggerParameter("A DTO object that can be used " +
+                "to customize some retrieval parameters")]
+            RequestDTO<BoardGameDTO> input)
         {
             _logger.LogInformation(CustomLogEvents.BoardGamesController_Get,
                 "Get method started.");
