@@ -119,8 +119,8 @@ namespace MyBGList.Controllers
         [Authorize]
         [HttpDelete(Name = "DeleteMechanic")]
         [ResponseCache(CacheProfileName = "NoCache")]
-        [CustomKeyValue("x-test-4", "value 4")]
-        [CustomKeyValue("x-test-5", "value 5")]
+        [CustomKeyValue("x-test-4", "value 4")] // Exercise 11.4.5
+        [CustomKeyValue("x-test-5", "value 5")] // Exercise 11.4.5
         public async Task<RestDTO<Mechanic?>> Delete(int id)
         {
             var mechanic = await _context.Mechanics
