@@ -1,6 +1,8 @@
 ﻿namespace MyBGList.Attributes
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Parameter, AllowMultiple = true)]
+    [AttributeUsage(
+        AttributeTargets.Property | AttributeTargets.Parameter, 
+        AllowMultiple = true)]
     public class CustomKeyValueAttribute : Attribute
     {
         public CustomKeyValueAttribute(string? key, string? value)

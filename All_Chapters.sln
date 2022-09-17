@@ -164,6 +164,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter_11", "Chapter_11", "{9541C59A-FB1C-4D2F-9E88-79AD53D89C7D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{093E5F60-C9CF-4075-9462-78C351A2AEE8}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_11\Exercises\DomainsController.cs = Chapter_11\Exercises\DomainsController.cs
+		Chapter_11\Exercises\MechanicsController.cs = Chapter_11\Exercises\MechanicsController.cs
+		Chapter_11\Exercises\UsernameRequestFilter.cs = Chapter_11\Exercises\UsernameRequestFilter.cs
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_11\MyBGList\MyBGList.csproj", "{B654DD87-F63F-422B-BF0C-8BF4257FDB85}"
 EndProject
