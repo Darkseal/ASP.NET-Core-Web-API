@@ -250,6 +250,25 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    // HTTP Security Headers
+    app.UseHsts();
+    app.Use(async (context, next) =>
+    {
+        context.Response.Headers.Add("X-Frame-Options", 
+            "sameorigin");
+        context.Response.Headers.Add("X-XSS-Protection", 
+            "1; mode=block");
+        context.Response.Headers.Add("X-Content-Type-Options", 
+            "nosniff");
+        context.Response.Headers.Add("Content-Security-Policy", 
+            "default-src 'self';");
+        context.Response.Headers.Add("Referrer-Policy", 
+            "strict-origin");
+        await next();
+    });
+}
 
 if (app.Configuration.GetValue<bool>("UseDeveloperExceptionPage"))
     app.UseDeveloperExceptionPage();
