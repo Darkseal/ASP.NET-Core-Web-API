@@ -331,7 +331,7 @@ app.MapGet("/error/test",
     { throw new Exception("test"); });
 
 app.MapGet("/cod/test",
-    [EnableCors("AnyOrigin")]
+    [EnableCors("AnyOrig<in")]
 [ResponseCache(NoStore = true)] () =>
     Results.Text("<script>" +
         "window.alert('Your client supports JavaScript!" +
