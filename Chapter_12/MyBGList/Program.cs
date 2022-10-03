@@ -256,15 +256,16 @@ else
     app.UseHsts();
     app.Use(async (context, next) =>
     {
-        context.Response.Headers.Add("X-Frame-Options", 
+        context.Response.Headers.Add("X-Frame-Options",
             "sameorigin");
-        context.Response.Headers.Add("X-XSS-Protection", 
+        context.Response.Headers.Add("X-XSS-Protection",
             "1; mode=block");
-        context.Response.Headers.Add("X-Content-Type-Options", 
+        context.Response.Headers.Add("X-Content-Type-Options",
             "nosniff");
-        context.Response.Headers.Add("Content-Security-Policy", 
-            "default-src 'self';");
-        context.Response.Headers.Add("Referrer-Policy", 
+        context.Response.Headers.Add("Content-Security-Policy",
+            "default-src 'self'; " +
+            "script-src 'sha256-V+/U3qbjHKP0SaNQhMwYNm62gfWX4QHwPJ7We1PXokI=';");
+        context.Response.Headers.Add("Referrer-Policy",
             "strict-origin");
         await next();
     });
