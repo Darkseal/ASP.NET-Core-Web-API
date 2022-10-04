@@ -252,6 +252,8 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
+    app.UseSwagger();
+    app.UseSwaggerUI();
     // HTTP Security Headers
     app.UseHsts();
     app.Use(async (context, next) =>
@@ -263,8 +265,7 @@ else
         context.Response.Headers.Add("X-Content-Type-Options",
             "nosniff");
         context.Response.Headers.Add("Content-Security-Policy",
-            "default-src 'self'; " +
-            "script-src 'sha256-V+/U3qbjHKP0SaNQhMwYNm62gfWX4QHwPJ7We1PXokI=';");
+            "default-src 'self'; script-src 'self' 'nonce-23a98b38c'");
         context.Response.Headers.Add("Referrer-Policy",
             "strict-origin");
         await next();
@@ -334,7 +335,7 @@ app.MapGet("/error/test",
 app.MapGet("/cod/test",
     [EnableCors("AnyOrig<in")]
 [ResponseCache(NoStore = true)] () =>
-    Results.Text("<script>" +
+    Results.Text("<script nonce='23a98b38c'>" +
         "window.alert('Your client supports JavaScript!" +
         "\\r\\n\\r\\n" +
         $"Server time (UTC): {DateTime.UtcNow.ToString("o")}" +

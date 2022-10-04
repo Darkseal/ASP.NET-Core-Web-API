@@ -11,8 +11,8 @@ using System.Globalization;
 
 namespace MyBGList.Controllers
 {
-    [Authorize(Roles = RoleNames.Administrator)]
-    [ApiExplorerSettings(IgnoreApi = true)]
+    // [Authorize(Roles = RoleNames.Administrator)]
+    // [ApiExplorerSettings(IgnoreApi = true)]
     [Route("[controller]/[action]")]
     [ApiController]
     public class SeedController : ControllerBase
@@ -45,8 +45,6 @@ namespace MyBGList.Controllers
         [ResponseCache(CacheProfileName = "NoCache")]
         public async Task<IActionResult> BoardGameData()
         {
-            throw new Exception();
-
             // SETUP
             var config = new CsvConfiguration(CultureInfo.GetCultureInfo("pt-BR"))
             {

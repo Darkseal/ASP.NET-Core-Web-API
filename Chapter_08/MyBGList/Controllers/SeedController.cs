@@ -33,8 +33,6 @@ namespace MyBGList.Controllers
         [ResponseCache(CacheProfileName = "NoCache")]
         public async Task<IActionResult> Put()
         {
-            throw new Exception();
-
             // SETUP
             var config = new CsvConfiguration(CultureInfo.GetCultureInfo("pt-BR"))
             {
