@@ -104,7 +104,9 @@ app.MapGet("/v{version:ApiVersion}/cod/test",
     Results.Text("<script>" +
         "window.alert('Your client supports JavaScript!" +
         "\\r\\n\\r\\n" +
-        "User-Agent: ' + navigator.userAgent);" +
+        $"Server time (UTC): {DateTime.UtcNow.ToString("o")}" +
+        "\\r\\n" +
+        "Client time (UTC): ' + new Date().toISOString());" +
         "</script>" +
         "<noscript>Your client does not support JavaScript</noscript>",
         "text/html"));

@@ -2,7 +2,7 @@
 {
     public class RestDTO<T>
     {
-        public T Data { get; set; } = default(T)!;
+        public T Data { get; set; } = default!;
 
         public int? PageIndex { get; set; }
 

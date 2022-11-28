@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{6773746C-CAC2-4114-81DE-B3418FB485C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controllers", "Controllers", "{E5732C54-26C7-4430-8C6D-A735EB028A81}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_05\Exercises\Controllers\BoardGamesController.cs = Chapter_05\Exercises\Controllers\BoardGamesController.cs
+		Chapter_05\Exercises\Controllers\SeedController.cs = Chapter_05\Exercises\Controllers\SeedController.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DTO", "DTO", "{73E9BD8E-0415-4D91-B646-38D84E34884B}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter_05\Exercises\DTO\BoardGameDTO.cs = Chapter_05\Exercises\DTO\BoardGameDTO.cs
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBGList", "Chapter_05\MyBGList\MyBGList.csproj", "{F610AA4C-2567-483C-91F0-D70C7FEE3B4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F610AA4C-2567-483C-91F0-D70C7FEE3B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F610AA4C-2567-483C-91F0-D70C7FEE3B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F610AA4C-2567-483C-91F0-D70C7FEE3B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F610AA4C-2567-483C-91F0-D70C7FEE3B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E5732C54-26C7-4430-8C6D-A735EB028A81} = {6773746C-CAC2-4114-81DE-B3418FB485C5}
+		{73E9BD8E-0415-4D91-B646-38D84E34884B} = {6773746C-CAC2-4114-81DE-B3418FB485C5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58E128FF-6460-4A49-9E95-9D8E08D888FC}
+	EndGlobalSection
+EndGlobal
