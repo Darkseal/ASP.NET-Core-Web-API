@@ -33,6 +33,7 @@ namespace MyBGList.Controllers
             var query = _context.Mechanics.AsQueryable();
             if (!string.IsNullOrEmpty(input.FilterQuery))
                 query = query.Where(b => b.Name.Contains(input.FilterQuery));
+            var recordCount = await query.CountAsync();
             query = query
                     .OrderBy($"{input.SortColumn} {input.SortOrder}")
                     .Skip(input.PageIndex * input.PageSize)
@@ -43,7 +44,7 @@ namespace MyBGList.Controllers
                 Data = await query.ToArrayAsync(),
                 PageIndex = input.PageIndex,
                 PageSize = input.PageSize,
-                RecordCount = await _context.Mechanics.CountAsync(),
+                RecordCount = recordCount,
                 Links = new List<LinkDTO> {
                     new LinkDTO(
                         Url.Action(

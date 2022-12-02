@@ -132,6 +132,7 @@ namespace MyBGList.Controllers
             var query = _context.BoardGames.AsQueryable();
             if (!string.IsNullOrEmpty(filterQuery))
                 query = query.Where(b => b.Name.Contains(filterQuery));
+            var recordCount = await query.CountAsync();
             query = query
                     .OrderBy($"{sortColumn} {sortOrder}")
                     .Skip(pageIndex * pageSize)
@@ -142,7 +143,7 @@ namespace MyBGList.Controllers
                 Data = await query.ToArrayAsync(),
                 PageIndex = pageIndex,
                 PageSize = pageSize,
-                RecordCount = await _context.BoardGames.CountAsync(),
+                RecordCount = recordCount,
                 Links = new List<LinkDTO> {
                     new LinkDTO(
                         Url.Action(

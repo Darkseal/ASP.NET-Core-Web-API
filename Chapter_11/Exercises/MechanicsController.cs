@@ -55,6 +55,7 @@ namespace MyBGList.Controllers
                 var query = _context.Mechanics.AsQueryable();
                 if (!string.IsNullOrEmpty(input.FilterQuery))
                     query = query.Where(b => b.Name.Contains(input.FilterQuery));
+                var recordCount = await query.CountAsync();
                 query = query
                         .OrderBy($"{input.SortColumn} {input.SortOrder}")
                         .Skip(input.PageIndex * input.PageSize)
@@ -68,7 +69,7 @@ namespace MyBGList.Controllers
                 Data = result!,
                 PageIndex = input.PageIndex,
                 PageSize = input.PageSize,
-                RecordCount = await _context.Mechanics.CountAsync(),
+                RecordCount = recordCount,
                 Links = new List<LinkDTO> {
                     new LinkDTO(
                         Url.Action(
@@ -119,9 +120,11 @@ namespace MyBGList.Controllers
         [Authorize]
         [HttpDelete(Name = "DeleteMechanic")]
         [ResponseCache(CacheProfileName = "NoCache")]
-        [CustomKeyValue("x-test-4", "value 4")] // Exercise 11.4.5
-        [CustomKeyValue("x-test-5", "value 5")] // Exercise 11.4.5
-        public async Task<RestDTO<Mechanic?>> Delete(int id)
+        public async Task<RestDTO<Mechanic?>> Delete(
+            [CustomKeyValue("x-test-4", "value 4")] // Exercise 11.4.5
+            [CustomKeyValue("x-test-5", "value 5")] // Exercise 11.4.5
+            int id
+            )
         {
             var mechanic = await _context.Mechanics
                 .Where(b => b.Id == id)

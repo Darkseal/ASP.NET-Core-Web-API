@@ -20,7 +20,7 @@ namespace MyBGList.Controllers
             return response;
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<BoardGameResponse> UpdateBoardGame(
             string token,
             int id,

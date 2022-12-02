@@ -29,7 +29,7 @@ namespace MyBGList.Swagger
                         .Select(p => p.Name);
                     parameter.Schema.Extensions.Add(
                         "pattern",
-                        new OpenApiString(string.Join("|", pattern))
+                        new OpenApiString(string.Join("|", pattern.Select(v => $"^{v}$")))
                         );
                 }
             }

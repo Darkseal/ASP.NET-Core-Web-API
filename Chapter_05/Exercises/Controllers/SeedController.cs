@@ -125,19 +125,12 @@ namespace MyBGList.Controllers
                             _context.Mechanics.Add(mechanic);
                             existingMechanics.Add(mechanicName, mechanic);
                         }
-                        try
+                        _context.BoardGames_Mechanics.Add(new BoardGames_Mechanics()
                         {
-                            _context.BoardGames_Mechanics.Add(new BoardGames_Mechanics()
-                            {
-                                BoardGame = boardgame,
-                                Mechanic = mechanic,
-                                CreatedDate = now
-                            });
-                        }
-                        catch (Exception e)
-                        {
-                            int i = 1;
-                        }
+                            BoardGame = boardgame,
+                            Mechanic = mechanic,
+                            CreatedDate = now
+                        });
                     }
             }
 

@@ -32,7 +32,7 @@ namespace MyBGList.Swagger
                                 Id="Bearer"
                             }
                         },
-                        new string[]{}
+                        Array.Empty<string>()
                     }
                 }
             };

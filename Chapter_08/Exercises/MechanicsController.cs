@@ -37,13 +37,16 @@ namespace MyBGList.Controllers
         public async Task<RestDTO<Mechanic[]>> Get(
             [FromQuery] RequestDTO<MechanicDTO> input)
         {
+            var query = _context.Mechanics.AsQueryable();
+            if (!string.IsNullOrEmpty(input.FilterQuery))
+                query = query.Where(b => b.Name.Contains(input.FilterQuery));
+
+            var recordCount = await query.CountAsync();
+
             Mechanic[]? result = null;
             var cacheKey = $"{input.GetType()}-{JsonSerializer.Serialize(input)}";
             if (!_distributedCache.TryGetValue<Mechanic[]>(cacheKey, out result))
             {
-                var query = _context.Mechanics.AsQueryable();
-                if (!string.IsNullOrEmpty(input.FilterQuery))
-                    query = query.Where(b => b.Name.Contains(input.FilterQuery));
                 query = query
                         .OrderBy($"{input.SortColumn} {input.SortOrder}")
                         .Skip(input.PageIndex * input.PageSize)
@@ -57,7 +60,7 @@ namespace MyBGList.Controllers
                 Data = result!,
                 PageIndex = input.PageIndex,
                 PageSize = input.PageSize,
-                RecordCount = await _context.Mechanics.CountAsync(),
+                RecordCount = recordCount,
                 Links = new List<LinkDTO> {
                     new LinkDTO(
                         Url.Action(

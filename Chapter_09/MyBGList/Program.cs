@@ -19,8 +19,10 @@ builder.Logging
     .ClearProviders()
     .AddSimpleConsole()
     .AddDebug()
-    .AddApplicationInsights(builder
-        .Configuration["Azure:ApplicationInsights:InstrumentationKey"]);
+    .AddApplicationInsights(telemetry => telemetry
+        .ConnectionString = builder
+            .Configuration["Azure:ApplicationInsights:ConnectionString"],
+        loggerOptions => { });
 
 builder.Host.UseSerilog((ctx, lc) =>
 {
@@ -119,7 +121,7 @@ builder.Services.AddSwaggerGen(options =>
                     Id="Bearer"
                 }
             },
-            new string[]{}
+            Array.Empty<string>()
         }
     });
 });

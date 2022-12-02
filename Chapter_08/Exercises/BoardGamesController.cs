@@ -9,6 +9,7 @@ using MyBGList.Attributes;
 using MyBGList.Constants;
 using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
+using System;
 
 namespace MyBGList.Controllers
 {
@@ -40,37 +41,29 @@ namespace MyBGList.Controllers
             _logger.LogInformation(CustomLogEvents.BoardGamesController_Get,
                 "Get method started.");
 
-            BoardGame[]? result = null;
+            // Exercise 8.5.4
+            (int recordCount, BoardGame[]? result) dataTuple = (0, null);
             var cacheKey = $"{input.GetType()}-{JsonSerializer.Serialize(input)}";
-            if (!_memoryCache.TryGetValue<BoardGame[]>(cacheKey, out result))
+            if (!_memoryCache.TryGetValue(cacheKey, out dataTuple))
             {
                 var query = _context.BoardGames.AsQueryable();
                 if (!string.IsNullOrEmpty(input.FilterQuery))
                     query = query.Where(b => b.Name.Contains(input.FilterQuery));
+                dataTuple.recordCount = await query.CountAsync();
                 query = query
                         .OrderBy($"{input.SortColumn} {input.SortOrder}")
                         .Skip(input.PageIndex * input.PageSize)
                         .Take(input.PageSize);
-                result = await query.ToArrayAsync();
-                _memoryCache.Set(cacheKey, result, new TimeSpan(0, 0, 30));
+                dataTuple.result = await query.ToArrayAsync();
+                _memoryCache.Set(cacheKey, dataTuple.result, new TimeSpan(0, 0, 30));
             }
-
-            // Exercise 8.5.4 (start)
-            int recordCount = 0;
-            var cacheKey_RecordCount = $"{input.GetType()}-RecordCount";
-            if (!_memoryCache.TryGetValue<int>(cacheKey_RecordCount, out recordCount))
-            {
-                recordCount = await _context.BoardGames.CountAsync();
-                _memoryCache.Set(cacheKey_RecordCount, recordCount, new TimeSpan(0, 0, 120));
-            }
-            // Exercise 8.5.4 (end)
 
             return new RestDTO<BoardGame[]>()
             {
-                Data = result,
+                Data = dataTuple.result, // Exercise 8.5.4
                 PageIndex = input.PageIndex,
                 PageSize = input.PageSize,
-                RecordCount = recordCount, // Exercise 8.5.4
+                RecordCount = dataTuple.recordCount, // Exercise 8.5.4
                 Links = new List<LinkDTO> {
                     new LinkDTO(
                         Url.Action(

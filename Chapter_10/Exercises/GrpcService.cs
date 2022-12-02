@@ -74,7 +74,7 @@ namespace MyBGList.gRPC
             UpdateDomainRequest request,
             ServerCallContext scc)
         {
-            var bg = await _context.Domains
+            var domain = await _context.Domains
                 .Where(d => d.Id == request.Id)
                 .FirstOrDefaultAsync();
             var response = new DomainResponse();
@@ -88,41 +88,41 @@ namespace MyBGList.gRPC
             }
             return response;
         }
-    }
 
-    public override async Task<MechanicResponse> GetMechanic(
-        MechanicRequest request,
-        ServerCallContext scc)
-    {
-        var mechanic = await _context.Mechanics
-            .Where(m => m.Id == request.Id)
-            .FirstOrDefaultAsync();
-        var response = new MechanicResponse();
-        if (mechanic != null)
+        public override async Task<MechanicResponse> GetMechanic(
+            MechanicRequest request,
+            ServerCallContext scc)
         {
-            response.Id = mechanic.Id;
-            response.Name = mechanic.Name;
+            var mechanic = await _context.Mechanics
+                .Where(m => m.Id == request.Id)
+                .FirstOrDefaultAsync();
+            var response = new MechanicResponse();
+            if (mechanic != null)
+            {
+                response.Id = mechanic.Id;
+                response.Name = mechanic.Name;
+            }
+            return response;
         }
-        return response;
-    }
 
-    [Authorize(Roles = RoleNames.Moderator)]
-    public override async Task<MechanicResponse> UpdateMechanic(
-        UpdateMechanicRequest request,
-        ServerCallContext scc)
-    {
-        var mechanic = await _context.Mechanics
-            .Where(m => m.Id == request.Id)
-            .FirstOrDefaultAsync();
-        var response = new MechanicResponse();
-        if (mechanic != null)
+        [Authorize(Roles = RoleNames.Moderator)]
+        public override async Task<MechanicResponse> UpdateMechanic(
+            UpdateMechanicRequest request,
+            ServerCallContext scc)
         {
-            mechanic.Name = request.Name;
-            _context.Mechanics.Update(mechanic);
-            await _context.SaveChangesAsync();
-            response.Id = mechanic.Id;
-            response.Name = mechanic.Name;
+            var mechanic = await _context.Mechanics
+                .Where(m => m.Id == request.Id)
+                .FirstOrDefaultAsync();
+            var response = new MechanicResponse();
+            if (mechanic != null)
+            {
+                mechanic.Name = request.Name;
+                _context.Mechanics.Update(mechanic);
+                await _context.SaveChangesAsync();
+                response.Id = mechanic.Id;
+                response.Name = mechanic.Name;
+            }
+            return response;
         }
-        return response;
     }
 }

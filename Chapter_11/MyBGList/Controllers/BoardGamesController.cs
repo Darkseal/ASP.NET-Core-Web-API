@@ -49,13 +49,16 @@ namespace MyBGList.Controllers
             _logger.LogInformation(CustomLogEvents.BoardGamesController_Get,
                 "Get method started.");
 
+            var query = _context.BoardGames.AsQueryable();
+            if (!string.IsNullOrEmpty(input.FilterQuery))
+                query = query.Where(b => b.Name.Contains(input.FilterQuery));
+            
+            var recordCount = await query.CountAsync();
+
             BoardGame[]? result = null;
             var cacheKey = $"{input.GetType()}-{JsonSerializer.Serialize(input)}";
             if (!_memoryCache.TryGetValue<BoardGame[]>(cacheKey, out result))
             {
-                var query = _context.BoardGames.AsQueryable();
-                if (!string.IsNullOrEmpty(input.FilterQuery))
-                    query = query.Where(b => b.Name.Contains(input.FilterQuery));
                 query = query
                         .OrderBy($"{input.SortColumn} {input.SortOrder}")
                         .Skip(input.PageIndex * input.PageSize)
@@ -69,7 +72,7 @@ namespace MyBGList.Controllers
                 Data = result,
                 PageIndex = input.PageIndex,
                 PageSize = input.PageSize,
-                RecordCount = await _context.BoardGames.CountAsync(),
+                RecordCount = recordCount,
                 Links = new List<LinkDTO> {
                     new LinkDTO(
                         Url.Action(

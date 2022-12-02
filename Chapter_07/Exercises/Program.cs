@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyBGList.Attributes;
 using MyBGList.Constants;
 using MyBGList.Models;
+using MyBGList.Swagger;
 using Serilog;
 using Serilog.Sinks.MSSqlServer;
 
@@ -18,8 +18,10 @@ builder.Logging
         }
     )
     .AddDebug()
-    .AddApplicationInsights(builder
-        .Configuration["Azure:ApplicationInsights:InstrumentationKey"]);
+    .AddApplicationInsights(telemetry => telemetry
+        .ConnectionString = builder
+            .Configuration["Azure:ApplicationInsights:ConnectionString"],
+        loggerOptions => { });
 
 builder.Host.UseSerilog((ctx, lc) => {
     lc.ReadFrom.Configuration(ctx.Configuration);

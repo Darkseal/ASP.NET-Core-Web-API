@@ -13,8 +13,10 @@ builder.Logging
     .ClearProviders()
     .AddSimpleConsole()
     .AddDebug()
-    .AddApplicationInsights(builder
-        .Configuration["Azure:ApplicationInsights:InstrumentationKey"]);
+    .AddApplicationInsights(telemetry => telemetry
+        .ConnectionString = builder
+            .Configuration["Azure:ApplicationInsights:ConnectionString"],
+        loggerOptions => { });
 
 builder.Host.UseSerilog((ctx, lc) =>
 {
