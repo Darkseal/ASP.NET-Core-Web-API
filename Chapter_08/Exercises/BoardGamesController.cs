@@ -55,7 +55,7 @@ namespace MyBGList.Controllers
                         .Skip(input.PageIndex * input.PageSize)
                         .Take(input.PageSize);
                 dataTuple.result = await query.ToArrayAsync();
-                _memoryCache.Set(cacheKey, dataTuple.result, new TimeSpan(0, 0, 30));
+                _memoryCache.Set(cacheKey, dataTuple, new TimeSpan(0, 0, 30));
             }
 
             return new RestDTO<BoardGame[]>()
